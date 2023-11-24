@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PressController : AplianceClass
 {
+    public AplianceClass resourceManager;
     // Start is called before the first frame update
     private void Update()
     {
