@@ -41,7 +41,7 @@ public class ApplianceClass: MonoBehaviour
         Destroy(oldRes.resourceObject);
         resources.Remove(resources.ElementAt(0));
         GameObject newItem = Instantiate(newRes.data.prefab, this.itemHolder.transform, false);
-        newItem.transform.localPosition = Vector3.zero;
-        newItem.transform.localRotation = Quaternion.identity;
+        newItem.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        Working = false;
     }
 }

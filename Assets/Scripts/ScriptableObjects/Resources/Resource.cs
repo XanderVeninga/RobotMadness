@@ -7,7 +7,7 @@ public class Resource : MonoBehaviour
     public ResourceData data;
     public GameObject resourceObject;
 
-    private void Start()
+    private void Awake()
     {
         resourceObject = gameObject;
     }

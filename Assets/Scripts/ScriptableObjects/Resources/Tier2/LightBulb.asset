@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 507064b281c727746b832992db476a8e, type: 3}
-  m_Name: Screws
+  m_Name: LightBulb
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3579201732675328424, guid: e5767b3deccf04547a5b5719b5e52a3b, type: 3}
-  id: 2
+  prefab: {fileID: 445432915285359982, guid: 77370d0566dfe5a45923104d4080a2f8, type: 3}
+  id: 8

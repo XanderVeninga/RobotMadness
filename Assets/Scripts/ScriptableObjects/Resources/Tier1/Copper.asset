@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507064b281c727746b832992db476a8e, type: 3}
   m_Name: Copper
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8122115790781437452, guid: fab691b9eb1f4c34b86ee41b58253542, type: 3}
+  prefab: {fileID: 9012272598625724580, guid: 1542ffb6d42e1eb46a659c8209a953ad, type: 3}
   id: 1

@@ -52,8 +52,7 @@ public class PlayerController : MonoBehaviour
                     var appliance = target.transform.GetComponentInChildren<ApplianceClass>();
                     resourceHolder.transform.GetChild(0).parent = appliance.itemHolder.transform;
                     appliance.AddResource(appliance.itemHolder.transform.GetChild(0).GetComponent<Resource>().data);
-                    appliance.itemHolder.transform.GetChild(0).localPosition = Vector3.zero;
-                    appliance.itemHolder.transform.GetChild(0).localRotation = Quaternion.identity;
+                    appliance.itemHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
                 }
                 else
                 {
@@ -72,9 +71,7 @@ public class PlayerController : MonoBehaviour
                                 appliance.resources.Remove(appliance.itemHolder.transform.GetChild(0).gameObject);
                             }
                             appliance.itemHolder.transform.GetChild(0).parent = resourceHolder.transform;
-                            resourceHolder.transform.GetChild(0).localPosition = Vector3.zero;
-                            resourceHolder.transform.GetChild(0).localRotation = Quaternion.identity;
-                            
+                            resourceHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
                         }
                     }
                 }

@@ -23,17 +23,16 @@ public class PressController : ApplianceClass
 
     private IEnumerator PressResources(Resource resource)
     {
-        switch(resource.data.Id)
+        Debug.Log(resource.data.Id);
+        switch (resource.data.Id)
         {
-            
             case 0: //steel
                 //play animation
                 ChangeResource(resource, resourceManager.resources[5].GetComponent<Resource>());
                 break;
-            case 1: //copper
-                //error, copper not allowed
+            case 5: //steel plate
+                ChangeResource(resource, resourceManager.resources[9].GetComponent<Resource>());
                 break;
-
         }
         if(this.Working)
         {

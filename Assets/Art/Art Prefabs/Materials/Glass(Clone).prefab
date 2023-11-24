@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5441797519481070079}
   - component: {fileID: 2743471943318869301}
   - component: {fileID: 761692249538679076}
+  - component: {fileID: 8056505043776890347}
   m_Layer: 0
   m_Name: Glass(Clone)
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8056505043776890347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6223155048012422552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0315426fed992b84e8749bf6483822ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: c597efe48eb16984b888f0065dd13a11, type: 2}
+  resourceObject: {fileID: 0}

@@ -153,12 +153,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resources:
-  - {fileID: 8122115790781437452, guid: 6d5c6ad676663bc45a3a8c096392daef, type: 3}
-  - {fileID: 8122115790781437452, guid: fab691b9eb1f4c34b86ee41b58253542, type: 3}
-  - {fileID: 8122115790781437452, guid: 6d5c6ad676663bc45a3a8c096392daef, type: 3}
-  - {fileID: 8122115790781437452, guid: 6d5c6ad676663bc45a3a8c096392daef, type: 3}
-  - {fileID: 8122115790781437452, guid: 6d5c6ad676663bc45a3a8c096392daef, type: 3}
-  - {fileID: 8122115790781437452, guid: 8c5cc181669d22e4a9cb1e55a2cd2319, type: 3}
+  - {fileID: 8704311912268972102, guid: 242fc83b3491a8f4888f3f33fb395eff, type: 3}
+  - {fileID: 9012272598625724580, guid: 1542ffb6d42e1eb46a659c8209a953ad, type: 3}
+  - {fileID: 3579201732675328424, guid: e5767b3deccf04547a5b5719b5e52a3b, type: 3}
+  - {fileID: 8376361248101977057, guid: e0da67c6a5688b240b3645654f371d52, type: 3}
+  - {fileID: 6223155048012422552, guid: bfa181a2c4c415644b6a073235838a0f, type: 3}
+  - {fileID: 8897474858976524795, guid: bb60b9dc87ee7384cbecdeb4065ea382, type: 3}
+  - {fileID: 6329924107326316894, guid: 1eb06878d42befb42999534ee280c324, type: 3}
+  - {fileID: 1490699829267587570, guid: 3ae4a0a9b32d03840a336b04989b9fef, type: 3}
+  - {fileID: 445432915285359982, guid: 77370d0566dfe5a45923104d4080a2f8, type: 3}
+  - {fileID: 8838832489327688638, guid: 74c23711e1d883b4e8b6cf2a347bd61d, type: 3}
   itemHolder: {fileID: 0}
 --- !u!4 &187468564
 Transform:
@@ -1096,6 +1100,7 @@ MonoBehaviour:
   cameraTransform: {fileID: 466744962}
   pickupDistance: 5
   resourceHolder: {fileID: 1999188386}
+  holdingitem: 0
 --- !u!54 &1883645899
 Rigidbody:
   m_ObjectHideFlags: 0

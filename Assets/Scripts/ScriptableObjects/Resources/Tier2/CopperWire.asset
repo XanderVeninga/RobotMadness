@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 507064b281c727746b832992db476a8e, type: 3}
-  m_Name: Screws
+  m_Name: CopperWire
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3579201732675328424, guid: e5767b3deccf04547a5b5719b5e52a3b, type: 3}
-  id: 2
+  prefab: {fileID: 6329924107326316894, guid: 1eb06878d42befb42999534ee280c324, type: 3}
+  id: 6

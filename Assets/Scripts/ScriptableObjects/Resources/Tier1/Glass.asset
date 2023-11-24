@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507064b281c727746b832992db476a8e, type: 3}
   m_Name: Glass
   m_EditorClassIdentifier: 
-  resourceObject: {fileID: 0}
+  prefab: {fileID: 6223155048012422552, guid: bfa181a2c4c415644b6a073235838a0f, type: 3}
   id: 4

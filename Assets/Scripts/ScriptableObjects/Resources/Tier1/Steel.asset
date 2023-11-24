@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507064b281c727746b832992db476a8e, type: 3}
   m_Name: Steel
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8122115790781437452, guid: 6d5c6ad676663bc45a3a8c096392daef, type: 3}
+  prefab: {fileID: 8704311912268972102, guid: 242fc83b3491a8f4888f3f33fb395eff, type: 3}
   id: 0

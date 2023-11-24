@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507064b281c727746b832992db476a8e, type: 3}
   m_Name: Steel Plate
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8122115790781437452, guid: 8c5cc181669d22e4a9cb1e55a2cd2319, type: 3}
+  prefab: {fileID: 8897474858976524795, guid: bb60b9dc87ee7384cbecdeb4065ea382, type: 3}
   id: 5

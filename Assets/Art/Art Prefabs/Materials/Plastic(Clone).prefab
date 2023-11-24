@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3993713824082234426}
   - component: {fileID: 4089273932862814275}
   - component: {fileID: 1017292793352054594}
+  - component: {fileID: -5335241795095325676}
   m_Layer: 0
   m_Name: Plastic(Clone)
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-5335241795095325676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8376361248101977057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0315426fed992b84e8749bf6483822ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: cdefe2609f00eba48b7e8af5d5c9673d, type: 2}
+  resourceObject: {fileID: 0}
