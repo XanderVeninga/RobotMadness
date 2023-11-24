@@ -5,10 +5,12 @@ using UnityEngine;
 public class ResourceSpawner : MonoBehaviour
 {
     public ResourceData resourceToSpawn;
+    private GameObject spawnedObject;
     
     public void SpawnResource(GameObject player)
     {
-        GameObject spawnedObject = Instantiate(resourceToSpawn.resourceObject, player.transform.GetChild(0));
+        spawnedObject = Instantiate(resourceToSpawn.prefab, player.transform.GetChild(0));
         spawnedObject.transform.localPosition = Vector3.zero;
+        spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;
     }
 }

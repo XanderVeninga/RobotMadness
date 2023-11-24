@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,7 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private float pickupDistance;
-    bool holdingitem = false;
+    public GameObject resourceHolder;
+    [SerializeField] bool holdingitem = false;
 
     private void Start()
     {
@@ -30,17 +32,53 @@ public class PlayerController : MonoBehaviour
         // Move and rotate the player
         MoveAndRotatePlayer(movement);
 
+        if(resourceHolder.transform.childCount == 0 && holdingitem)
+        {
+            holdingitem = false;
+        }
+        else if(resourceHolder.transform.childCount > 0 && !holdingitem)
+        {
+            holdingitem = true;
+        }
+
+
         //Get Input From MouseButtons and check for
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (Physics.Raycast(this.transform.position, this.transform.forward, out RaycastHit target, pickupDistance))
             {
-                Debug.DrawLine(this.transform.position, target.transform.position);
-                if(target.transform.gameObject.GetComponent<ResourceSpawner>())
+                if (holdingitem)
                 {
-                    target.transform.gameObject.GetComponent<ResourceSpawner>().SpawnResource(this.gameObject);
-                    holdingitem = true;
+                    var appliance = target.transform.GetComponentInChildren<ApplianceClass>();
+                    resourceHolder.transform.GetChild(0).parent = appliance.itemHolder.transform;
+                    appliance.AddResource(appliance.itemHolder.transform.GetChild(0).GetComponent<Resource>().data);
+                    appliance.itemHolder.transform.GetChild(0).localPosition = Vector3.zero;
+                    appliance.itemHolder.transform.GetChild(0).localRotation = Quaternion.identity;
                 }
+                else
+                {
+                    if (target.transform.gameObject.GetComponent<ResourceSpawner>())
+                    {
+                        target.transform.gameObject.GetComponent<ResourceSpawner>().SpawnResource(gameObject);
+                        holdingitem = true;
+                    }
+                    else if(target.transform.gameObject.GetComponent<ApplianceClass>())
+                    {
+                        var appliance = target.transform.GetComponentInChildren<ApplianceClass>();
+                        if (appliance.itemHolder.transform.GetChild(0) != null)
+                        {
+                            if (appliance.resources.Contains(appliance.itemHolder.transform.GetChild(0).gameObject))
+                            {
+                                appliance.resources.Remove(appliance.itemHolder.transform.GetChild(0).gameObject);
+                            }
+                            appliance.itemHolder.transform.GetChild(0).parent = resourceHolder.transform;
+                            resourceHolder.transform.GetChild(0).localPosition = Vector3.zero;
+                            resourceHolder.transform.GetChild(0).localRotation = Quaternion.identity;
+                            
+                        }
+                    }
+                }
+                Debug.DrawLine(this.transform.position, target.transform.position);
             }
         }
     }

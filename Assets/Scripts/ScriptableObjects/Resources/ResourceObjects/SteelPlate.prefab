@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3909519405821458909}
   - component: {fileID: 4047804874262497836}
   - component: {fileID: 9207509709052907128}
+  - component: {fileID: -7917670676349321886}
   m_Layer: 0
   m_Name: SteelPlate
   m_TagString: Untagged
@@ -105,3 +106,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7917670676349321886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8122115790781437452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0315426fed992b84e8749bf6483822ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 0ed8b121ef5b67c49835a828c9c078d2, type: 2}

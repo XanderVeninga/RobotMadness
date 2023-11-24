@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Resources")]
 public class ResourceData : ScriptableObject
 {
-    public GameObject resourceObject;
+    public GameObject prefab;
     [SerializeField] private int id;
     public int Id
     {
