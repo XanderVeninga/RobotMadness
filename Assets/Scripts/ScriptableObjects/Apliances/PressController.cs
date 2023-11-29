@@ -17,11 +17,11 @@ public class PressController : ApplianceClass
         if (this.resources.Count > 0 && !this.Working)
         {
             this.Working = true;
-            StartCoroutine(PressResources(itemHolder.transform.GetChild(0).GetComponent<Resource>()));
+            PressResources(itemHolder.transform.GetChild(0).GetComponent<Resource>());
         }
     }
 
-    private IEnumerator PressResources(Resource resource)
+    private void PressResources(Resource resource)
     {
         Debug.Log(resource.data.Id);
         switch (resource.data.Id)
@@ -33,14 +33,6 @@ public class PressController : ApplianceClass
             case 5: //steel plate
                 ChangeResource(resource, resourceManager.resources[9].GetComponent<Resource>());
                 break;
-        }
-        if(this.Working)
-        {
-            yield return new WaitForSeconds(0.5f);
-        }
-        else
-        {
-            StopCoroutine(nameof(PressResources));
-        }
+        }        
     }
 }
