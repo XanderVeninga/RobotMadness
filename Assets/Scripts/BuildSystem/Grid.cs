@@ -47,7 +47,7 @@ public class Grid<TGridObject>
             {
                 for (int z = 0; z < gridArray.GetLength(1); z++)
                 {
-                    debugTextArray[x, z] = UtilsClass.CreateWorldText(gridArray[x, z]?.ToString(), null, GetWorldPosition(x, z) + new Vector3(cellSize, cellSize) * .5f, 30, Color.white, TextAnchor.MiddleCenter);
+                    debugTextArray[x, z] = UtilsClass.CreateWorldText(gridArray[x, z]?.ToString(), null, GetWorldPosition(x, z) + new Vector3(cellSize, cellSize) * .5f, 10, Color.white, TextAnchor.MiddleCenter);
                     Debug.DrawLine(GetWorldPosition(x, z), GetWorldPosition(x, z + 1), Color.white, 100f);
                     Debug.DrawLine(GetWorldPosition(x, z), GetWorldPosition(x + 1, z), Color.white, 100f);
                 }
@@ -55,7 +55,8 @@ public class Grid<TGridObject>
             Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 100f);
             Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
 
-            OnGridObjectChanged += (object sender, OnGridObjectChangedEventArgs eventArgs) => {
+            OnGridObjectChanged += (object sender, OnGridObjectChangedEventArgs eventArgs) =>
+            {
                 debugTextArray[eventArgs.x, eventArgs.z].text = gridArray[eventArgs.x, eventArgs.z]?.ToString();
             };
         }
@@ -81,7 +82,7 @@ public class Grid<TGridObject>
         return new Vector3(x, 0, z) * cellSize + originPosition;
     }
 
-    private (int,int) GetXZ(Vector3 worldPosition)
+    public (int, int) GetXZ(Vector3 worldPosition)
     {
         int x = Mathf.FloorToInt((worldPosition - originPosition).x / cellSize);
         int z = Mathf.FloorToInt((worldPosition - originPosition).z / cellSize);
