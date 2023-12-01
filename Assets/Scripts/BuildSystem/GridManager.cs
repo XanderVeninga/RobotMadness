@@ -5,22 +5,44 @@ using CodeMonkey.Utils;
 
 public class GridManager : MonoBehaviour
 {
-    [SerializeField] Grid<bool> grid;
+    private Grid<GridObject> grid;
 
-    private void Start()
+    private void Awake()
     {
-        grid = new Grid<bool>(5,5,10f, new Vector3(0,0,0));
+        int gridWidth = 10;
+
+        int gridHeight = 10;
+
+        float cellSize = 1f;
+        grid = new Grid<GridObject>(gridWidth, gridHeight, cellSize, new Vector3(0, 0, 0), (Grid<GridObject> g, int x, int z) => new GridObject(g, x, z));
     }
 
-    private void Update()
+    public class GridObject
     {
-        if (Input.GetMouseButtonDown(0))
+
+
+
+        private Grid<GridObject> grid;
+
+        private int x;
+
+        private int z;
+
+
+
+        public GridObject(Grid<GridObject> grid, int x, int z)
         {
-            grid.SetValue(UtilsClass.GetMouseWorldPosition(), true);
+
+            this.grid = grid;
+
+            this.x = x;
+
+            this.z = z;
         }
-        if (Input.GetMouseButtonDown(1))
+
+        public override string ToString()
         {
-            Debug.Log(grid.GetValue(UtilsClass.GetMouseWorldPosition()));
+            return x + "," + z;
         }
     }
 }
