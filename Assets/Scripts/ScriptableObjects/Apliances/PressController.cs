@@ -26,11 +26,11 @@ public class PressController : ApplianceClass
         Debug.Log(resource.data.Id);
         switch (resource.data.Id)
         {
-            case 0: //steel
+            case Steel_ID: //steel
                 //play animation
-                ChangeResource(resource, resourceManager.resources[5].GetComponent<Resource>());
+                ChangeResource(resource, resourceManager.resources[SteelPlate_ID].GetComponent<Resource>());
                 break;
-            case 5: //steel plate
+            case SteelPlate_ID: //steel plate
                 ChangeResource(resource, resourceManager.resources[9].GetComponent<Resource>());
                 break;
         }        
