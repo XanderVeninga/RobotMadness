@@ -19,26 +19,25 @@ public class BlastFurnaceController : ApplianceClass
         if (this.resources.Count > 0 && !this.Working)
         {
             this.Working = true;
-            
+            SmeltResource(this.resources[0].GetComponent<Resource>());
         }
     }
 
     void SmeltResource(Resource resource)
     {
-        if(this.resources.Contains(resource.resourceObject))
-        {
 
-        }
         Debug.Log(resource.data.Id);
         switch (resource.data.Id)
         {
             case CopperWire_ID: //copper
-                //play animation
-                ChangeResource(resource, resourceManager.resources[].GetComponent<Resource>());
-                break;
-            case 5: //steel plate
-                ChangeResource(resource, resourceManager.resources[9].GetComponent<Resource>());
+                                //play animation
+                if (this.resources[2].GetComponent<Resource>().data.Id == Glass_ID)
+                {
+                    ChangeResource(resource, resourceManager.resources[LightBulb_ID].GetComponent<Resource>());
+                    this.resources.RemoveAt(2);
+                }
                 break;
         }
+
     }
 }

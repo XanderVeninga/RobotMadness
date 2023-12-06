@@ -17,7 +17,7 @@ public class PressController : ApplianceClass
         if (this.resources.Count > 0 && !this.Working)
         {
             this.Working = true;
-            PressResources(itemHolder.transform.GetChild(0).GetComponent<Resource>());
+            PressResources(this.resources[0].GetComponent<Resource>());
         }
     }
 
@@ -31,7 +31,7 @@ public class PressController : ApplianceClass
                 ChangeResource(resource, resourceManager.resources[SteelPlate_ID].GetComponent<Resource>());
                 break;
             case SteelPlate_ID: //steel plate
-                ChangeResource(resource, resourceManager.resources[9].GetComponent<Resource>());
+                ChangeResource(resource, resourceManager.resources[SteelPipe_ID].GetComponent<Resource>());
                 break;
         }        
     }
