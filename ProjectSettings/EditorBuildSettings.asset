@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Marnix Test.unity
+    guid: c28b63d148c896148aaab36326bb8055
+  - enabled: 1
+    path: Assets/Scenes/Xander's TestScene.unity
+    guid: 014a15a16cee4f54586d00e8cdd7f377
   m_configObjects: {}
