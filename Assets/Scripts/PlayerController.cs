@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private float pickupDistance;
     public GameObject resourceHolder;
-    [SerializeField] bool holdingitem = false;
+    [SerializeField] bool isHoldingItem = false;
 
     private void Start()
     {
@@ -32,13 +32,13 @@ public class PlayerController : MonoBehaviour
         // Move and rotate the player
         MoveAndRotatePlayer(movement);
 
-        if(resourceHolder.transform.childCount == 0 && holdingitem)
+        if(resourceHolder.transform.childCount == 0 && isHoldingItem)
         {
-            holdingitem = false;
+            isHoldingItem = false;
         }
-        else if(resourceHolder.transform.childCount > 0 && !holdingitem)
+        else if(resourceHolder.transform.childCount > 0 && !isHoldingItem)
         {
-            holdingitem = true;
+            isHoldingItem = true;
         }
 
 
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Physics.Raycast(this.transform.position, this.transform.forward, out RaycastHit target, pickupDistance))
             {
-                if (holdingitem)
+                if (isHoldingItem)
                 {
                     var appliance = target.transform.GetComponentInChildren<ApplianceClass>();
                     resourceHolder.transform.GetChild(0).parent = appliance.itemHolder.transform;
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
                     if (target.transform.gameObject.GetComponent<ResourceSpawner>())
                     {
                         target.transform.gameObject.GetComponent<ResourceSpawner>().SpawnResource(gameObject);
-                        holdingitem = true;
+                        isHoldingItem = true;
                     }
                     else if(target.transform.gameObject.GetComponent<ApplianceClass>())
                     {

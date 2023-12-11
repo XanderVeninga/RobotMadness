@@ -5,13 +5,6 @@ using UnityEngine;
 
 public class PressController : ApplianceClass
 {
-    public ApplianceClass resourceManager;
-    // Start is called before the first frame update
-    private void Start()
-    {
-        resourceManager = FindAnyObjectByType<ApplianceClass>();
-        itemHolder = this.transform.GetChild(0).gameObject;
-    }
     private void Update()
     {
         if (this.resources.Count > 0 && !this.Working)
@@ -28,10 +21,10 @@ public class PressController : ApplianceClass
         {
             case Steel_ID: //steel
                 //play animation
-                ChangeResource(resource, resourceManager.resources[SteelPlate_ID].GetComponent<Resource>());
+                ChangeResource(resource, resourceManager.resources[SteelPlate_ID]);
                 break;
             case SteelPlate_ID: //steel plate
-                ChangeResource(resource, resourceManager.resources[SteelPipe_ID].GetComponent<Resource>());
+                ChangeResource(resource, resourceManager.resources[SteelPipe_ID]);
                 break;
         }        
     }

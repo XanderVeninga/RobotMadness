@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class ApplianceClass: MonoBehaviour
 {
+    public ResourceManager resourceManager;
     public List<GameObject> resources = new List<GameObject>();
     public GameObject itemHolder;
     bool working = false;
@@ -30,10 +31,12 @@ public class ApplianceClass: MonoBehaviour
         set { working = value; }
     }
 
-    private void Awake()
+    private void Start()
     {
+        resourceManager = ResourceManager.Instance;
         try
         {
+            
             if (gameObject.transform.childCount > 0)
             {
                 itemHolder = gameObject.transform.GetChild(0).gameObject;
@@ -49,12 +52,12 @@ public class ApplianceClass: MonoBehaviour
         this.resources.Add(resource.prefab);
 
     }
-    public void ChangeResource(Resource oldRes, Resource newRes)
+    public void ChangeResource(Resource oldRes, ResourceData newRes)
     {
         Debug.Log(oldRes.name);
         Destroy(oldRes.resourceObject);
         resources.Remove(resources.ElementAt(0));
-        GameObject newItem = Instantiate(newRes.data.prefab, this.itemHolder.transform, false);
+        GameObject newItem = Instantiate(newRes.prefab, this.itemHolder.transform, false);
         newItem.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
         Working = false;
     }

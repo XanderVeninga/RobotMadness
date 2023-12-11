@@ -4,12 +4,10 @@ using System.Resources;
 using UnityEngine;
 
 public class BlastFurnaceController : ApplianceClass
-{
-    public ApplianceClass resourceManager;
+{ 
     // Start is called before the first frame update
     private void Start()
     {
-        resourceManager = FindAnyObjectByType<ApplianceClass>();
         itemHolder = this.transform.GetChild(0).gameObject;
     }
 
@@ -33,7 +31,7 @@ public class BlastFurnaceController : ApplianceClass
                                 //play animation
                 if (this.resources[2].GetComponent<Resource>().data.Id == Glass_ID)
                 {
-                    ChangeResource(resource, resourceManager.resources[LightBulb_ID].GetComponent<Resource>());
+                    ChangeResource(resource, resourceManager.resources[LightBulb_ID]);
                     this.resources.RemoveAt(2);
                 }
                 break;
