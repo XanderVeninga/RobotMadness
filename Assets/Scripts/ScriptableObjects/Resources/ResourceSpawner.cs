@@ -9,7 +9,7 @@ public class ResourceSpawner : MonoBehaviour
     
     public void SpawnResource(GameObject player)
     {
-        spawnedObject = Instantiate(resourceToSpawn.prefab, player.transform.GetChild(0));
+        spawnedObject = Instantiate(resourceToSpawn.prefab, player.GetComponent<PlayerController>().resourceHolder.transform);
         spawnedObject.transform.localPosition = Vector3.zero;
         spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;
     }

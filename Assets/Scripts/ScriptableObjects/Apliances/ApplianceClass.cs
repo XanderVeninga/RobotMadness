@@ -8,7 +8,7 @@ using UnityEngine;
 public class ApplianceClass: MonoBehaviour
 {
     public ResourceManager resourceManager;
-    public List<GameObject> resources = new List<GameObject>();
+    public Inventory applianceInventory = new Inventory();
     public GameObject itemHolder;
     bool working = false;
 
@@ -47,16 +47,26 @@ public class ApplianceClass: MonoBehaviour
             Debug.LogException(ex);
         }
     }
+
+    public void InsertItem(ResourceData resource)
+    {
+        applianceInventory.AddItem(resource.Id);
+        resource.GetComponent<GameObject>().transform.parent = itemHolder.transform;
+        itemHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+    }
+    public void RemoveItem(GameObject player)
+    {
+        applianceInventory.RemoveItem(applianceInventory.itemIDs[0]);
+
+    }
     public void AddResource(ResourceData resource)
     {
-        this.resources.Add(resource.prefab);
 
     }
     public void ChangeResource(Resource oldRes, ResourceData newRes)
     {
         Debug.Log(oldRes.name);
         Destroy(oldRes.resourceObject);
-        resources.Remove(resources.ElementAt(0));
         GameObject newItem = Instantiate(newRes.prefab, this.itemHolder.transform, false);
         newItem.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
         Working = false;

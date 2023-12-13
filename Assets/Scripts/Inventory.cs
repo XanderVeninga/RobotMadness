@@ -2,22 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory
 {
     public List<int> itemIDs;
     ResourceManager resourceManager;
 
-    private void Start()
+    public Inventory()
     {
         resourceManager = ResourceManager.Instance;
     }
-
-    public void AddItem(ResourceData data)
+    public void AddItem(int id)
     {
-        itemIDs.Add(data.Id);
+        itemIDs.Add(id);
     }
-
-    public ResourceData GetItem(int id)
+    public void RemoveItem(int id)
+    {
+        itemIDs.Remove(id);
+    }
+    public ResourceData GetItemData(int id)
     {
         return resourceManager.resources[itemIDs[id]];
     }
