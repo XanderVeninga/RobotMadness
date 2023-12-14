@@ -67,7 +67,6 @@ public class ApplianceClass : MonoBehaviour
     public void Craft()
     {
         List<ResourceData> requiredResources = new List<ResourceData>(currentRecipe.inputItemlist);
-        List<GameObject> itemsToConsume = new List<GameObject>();
 
         foreach(ResourceData item in requiredResources)
         {
