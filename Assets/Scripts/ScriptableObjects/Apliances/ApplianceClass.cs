@@ -5,25 +5,14 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ApplianceClass: MonoBehaviour
+public class ApplianceClass : MonoBehaviour
 {
+    [SerializeField] private List<CraftingRecipe> recipes;
+    public CraftingRecipe currentRecipe;
     public ResourceManager resourceManager;
     public Inventory applianceInventory = new Inventory();
     public GameObject itemHolder;
     bool working = false;
-
-    public const int Steel_ID = 0;
-    public const int Copper_ID = 1;
-    public const int Screws_ID = 2;
-    public const int Plastic_ID = 3;
-    public const int Glass_ID = 4;
-    public const int SteelPlate_ID = 5;
-    public const int CopperWire_ID = 6;
-    public const int Battery_ID = 7;
-    public const int LightBulb_ID = 8;
-    public const int SteelPipe_ID = 9;
-
-
 
     public bool Working
     {
@@ -34,6 +23,7 @@ public class ApplianceClass: MonoBehaviour
     private void Start()
     {
         resourceManager = ResourceManager.Instance;
+        currentRecipe = recipes[0];
         try
         {
             
@@ -48,27 +38,56 @@ public class ApplianceClass: MonoBehaviour
         }
     }
 
-    public void InsertItem(ResourceData resource)
+    public void InsertItem(Resource resource)
     {
-        applianceInventory.AddItem(resource.Id);
-        resource.GetComponent<GameObject>().transform.parent = itemHolder.transform;
-        itemHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        if(itemHolder.GetComponentInChildren<Resource>() == null)
+        {
+            applianceInventory.AddItem(resource.data.Id);
+            resource.resourceObject.transform.parent = itemHolder.transform;
+            itemHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        }
+        else
+        {
+            applianceInventory.AddItem(resource.data.Id);
+            Destroy(resource.gameObject);
+        }
+        Craft();
     }
     public void RemoveItem(GameObject player)
     {
-        applianceInventory.RemoveItem(applianceInventory.itemIDs[0]);
-
+        applianceInventory.RemoveItem(applianceInventory.itemIds[0]);
+        if(itemHolder.GetComponentInChildren<Resource>() == null)
+        {
+            GameObject spawnedObject = Instantiate(resourceManager.resources[applianceInventory.itemIds[0]].prefab, player.GetComponent<PlayerController>().resourceHolder.transform);
+            spawnedObject.transform.localPosition = Vector3.zero;
+            spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;
+        }
     }
-    public void AddResource(ResourceData resource)
+    
+    public void Craft()
     {
+        List<ResourceData> requiredResources = new List<ResourceData>(currentRecipe.inputItemlist);
+        List<GameObject> itemsToConsume = new List<GameObject>();
 
-    }
-    public void ChangeResource(Resource oldRes, ResourceData newRes)
-    {
-        Debug.Log(oldRes.name);
-        Destroy(oldRes.resourceObject);
-        GameObject newItem = Instantiate(newRes.prefab, this.itemHolder.transform, false);
-        newItem.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-        Working = false;
+        foreach(ResourceData item in requiredResources)
+        {
+            for(int i = 0; i <= applianceInventory.itemIds.Count; i++)
+            {
+                if (applianceInventory.itemIds[i] == item.Id)
+                {
+                    applianceInventory.RemoveItem(applianceInventory.itemIds.IndexOf(item.Id));
+                    requiredResources.Remove(item);
+                    break;
+                }
+            }
+        }
+        if(requiredResources.Count > 0)
+        {
+            
+            GameObject spawnedObject = Instantiate(currentRecipe.outputItem.prefab, itemHolder.transform);
+            spawnedObject.transform.localPosition = Vector3.zero;
+            spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;
+            applianceInventory.InsertItemAtTop(currentRecipe.outputItem.Id);
+        }
     }
 }

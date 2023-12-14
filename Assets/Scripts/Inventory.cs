@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class Inventory
 {
-    public List<int> itemIDs;
+    public List<int> itemIds = new List<int>();
     ResourceManager resourceManager;
 
     public Inventory()
@@ -13,14 +15,18 @@ public class Inventory
     }
     public void AddItem(int id)
     {
-        itemIDs.Add(id);
+        itemIds.Add(id);
+    }
+    public void InsertItemAtTop(int id)
+    {
+        itemIds.Insert(0, id);
     }
     public void RemoveItem(int id)
     {
-        itemIDs.Remove(id);
+        itemIds.Remove(id);
     }
     public ResourceData GetItemData(int id)
     {
-        return resourceManager.resources[itemIDs[id]];
+        return resourceManager.resources[itemIds[id]];
     }
 }

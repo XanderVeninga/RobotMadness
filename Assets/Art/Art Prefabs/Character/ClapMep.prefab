@@ -161,8 +161,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   cameraTransform: {fileID: 0}
-  pickupDistance: 0
+  pickupDistance: 5
   resourceHolder: {fileID: 2894103655404582704}
+  playerInventory:
+    itemIDs: 
   isHoldingItem: 0
   animator: {fileID: 8723258753452156662}
 --- !u!54 &8004687915504068313
@@ -211,7 +213,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.4
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}

@@ -72,25 +72,26 @@ public class PlayerController : MonoBehaviour
                     if (target.transform.gameObject.GetComponent<ApplianceClass>()) // if its an appliance
                     {
                         var appliance = target.transform.gameObject.GetComponent<ApplianceClass>();
-                        appliance.InsertItem(resourceHolder.transform.GetChild(0).GetComponent<Resource>().data);
-                        playerInventory.RemoveItem(playerInventory.itemIDs[0]);
+                        appliance.InsertItem(resourceHolder.transform.GetComponentInChildren<Resource>());
+
+                        playerInventory.RemoveItem(playerInventory.itemIds[0]);
                     }
                     else if(target.transform.gameObject.GetComponent<ResourceSpawner>()) // if its a resource spawner
                     {
                         var spawner = target.transform.gameObject.GetComponent<ResourceSpawner>();
-                        if (resourceHolder.transform.GetComponent<Resource>().data == spawner.resourceToSpawn)
+                        if (resourceHolder.transform.GetComponentInChildren<Resource>().data.Id == spawner.resourceToSpawn.Id)
                         {
-                            Destroy(resourceHolder.transform.GetChild(0).gameObject);
+                            Destroy(resourceHolder.transform.GetChild(1).gameObject);
                         }
                     }
-                    // if its a conveyorbelt
+                    // if its a conveyor belt
                 }
                 else //not holding item
                 {
                     if (target.transform.gameObject.GetComponent<ResourceSpawner>()) // get an item
                     {
                         target.transform.gameObject.GetComponent<ResourceSpawner>().SpawnResource(gameObject);
-                        playerInventory.AddItem(resourceHolder.GetComponent<Resource>().data.Id);
+                        playerInventory.AddItem(resourceHolder.GetComponentInChildren<Resource>().data.Id);
                         isHoldingItem = true;
                     }
                     else if(target.transform.gameObject.GetComponent<ApplianceClass>()) // get a potential item out of the appliance
@@ -98,9 +99,10 @@ public class PlayerController : MonoBehaviour
                         var appliance = target.transform.GetComponentInChildren<ApplianceClass>();
                         if (appliance.itemHolder.transform.GetChild(0) != null)
                         {
-                            
+                            playerInventory.AddItem(appliance.itemHolder.transform.GetComponentInChildren<Resource>().data.Id);
                             appliance.itemHolder.transform.GetChild(0).parent = resourceHolder.transform;
-                            resourceHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                            resourceHolder.transform.GetChild(1).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                            appliance.applianceInventory.RemoveItem(0);
                         }
                     }
                 }
