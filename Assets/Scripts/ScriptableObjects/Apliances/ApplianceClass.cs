@@ -13,6 +13,7 @@ public class ApplianceClass : MonoBehaviour
     public Inventory applianceInventory = new();
     public GameObject itemHolder;
     bool working = false;
+    [SerializeField] private int maxItems;
 
     public bool Working
     {
@@ -33,29 +34,42 @@ public class ApplianceClass : MonoBehaviour
     }
     
 
-    public void InsertItem(Resource resource)
+    public void InsertItem(Resource resource, PlayerController player)
     {
-        if(itemHolder.GetComponentInChildren<Resource>() == null)
+        if(applianceInventory.itemIds.Count < maxItems)
         {
-            applianceInventory.AddItem(resource.data.Id);
-            resource.resourceObject.transform.parent = itemHolder.transform;
-            itemHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            if (itemHolder.GetComponentInChildren<Resource>() == null)
+            {
+                applianceInventory.AddItem(resource.data.Id);
+                resource.resourceObject.transform.parent = itemHolder.transform;
+                itemHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            }
+            else
+            {
+                applianceInventory.AddItem(resource.data.Id);
+                Destroy(resource.gameObject);
+            }
+            player.playerInventory.RemoveItem(player.playerInventory.itemIds[0]);
+            Craft();
         }
-        else
-        {
-            applianceInventory.AddItem(resource.data.Id);
-            Destroy(resource.gameObject);
-        }
-        Craft();
     }
     public void RemoveItem(GameObject player)
     {
-        applianceInventory.RemoveItem(applianceInventory.itemIds[0]);
-        if(itemHolder.GetComponentInChildren<Resource>() == null)
+        if(applianceInventory.itemIds.Count > 0)
         {
-            GameObject spawnedObject = Instantiate(resourceManager.resources[applianceInventory.itemIds[0]].prefab, player.GetComponent<PlayerController>().resourceHolder.transform);
-            spawnedObject.transform.localPosition = Vector3.zero;
-            spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;
+            applianceInventory.RemoveItem(applianceInventory.itemIds[0]);
+            if(itemHolder.GetComponentInChildren<Resource>() == null )
+            {
+                if (applianceInventory.itemIds.Count != 0)
+                {
+                    GameObject spawnedObject =
+                        Instantiate(resourceManager.resources[applianceInventory.itemIds[0]].prefab,
+                        player.GetComponent<PlayerController>().resourceHolder.transform);
+                    spawnedObject.transform.localPosition = Vector3.zero;
+                    spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;
+                }
+            }
+            
         }
     }
     
@@ -65,7 +79,7 @@ public class ApplianceClass : MonoBehaviour
 
         foreach(ResourceData item in currentRecipe.inputItemlist)
         {
-            for(int i = 0; i <= applianceInventory.itemIds.Count; i++)
+            for(int i = 0; i < applianceInventory.itemIds.Count; i++)
             {
                 if (applianceInventory.itemIds[i] == item.Id)
                 {
@@ -75,15 +89,24 @@ public class ApplianceClass : MonoBehaviour
                 }
             }
         }
-        Debug.Log(requiredResources.Count);
         if (requiredResources.Count <= 0)
         {
-            Destroy(itemHolder.GetComponentInChildren<Resource>().gameObject);
-            Debug.Log("Spawning");
-            GameObject spawnedObject = Instantiate(currentRecipe.outputItem.prefab, itemHolder.transform);
-            spawnedObject.transform.localPosition = Vector3.zero;
-            spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;
-            applianceInventory.InsertItemAtTop(currentRecipe.outputItem.Id);
+            gameObject.GetComponent<Animation>().Play();
+            
         }
+    }
+    public void ItemSwapOnAnimation()
+    {
+        for (int d = 0; d < itemHolder.transform.childCount; d++)
+        {
+            if (itemHolder.transform.GetChild(d).GetComponent<Resource>())
+            {
+                Destroy(itemHolder.transform.GetChild(d).gameObject);
+            }
+        }
+        GameObject spawnedObject = Instantiate(currentRecipe.outputItem.prefab, itemHolder.transform);
+        spawnedObject.transform.localPosition = Vector3.zero;
+        spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;
+        applianceInventory.InsertItemAtTop(currentRecipe.outputItem.Id);
     }
 }
