@@ -333,7 +333,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2127002260
+--- !u!1001 &1124861149557173738
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -341,66 +341,71 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 821fe81265d2b3b4b8da3cd4063700ff,
+    - target: {fileID: 2028829254984811645, guid: 0f43c4b2aa72a614b93d7f67c10154d5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300918416948817040, guid: 0f43c4b2aa72a614b93d7f67c10154d5,
+        type: 3}
+      propertyPath: m_Name
+      value: MetalicPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 7933585742132360746, guid: 0f43c4b2aa72a614b93d7f67c10154d5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.905501
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 821fe81265d2b3b4b8da3cd4063700ff,
+    - target: {fileID: 7933585742132360746, guid: 0f43c4b2aa72a614b93d7f67c10154d5,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 821fe81265d2b3b4b8da3cd4063700ff,
+    - target: {fileID: 7933585742132360746, guid: 0f43c4b2aa72a614b93d7f67c10154d5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.96078193
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 821fe81265d2b3b4b8da3cd4063700ff,
+    - target: {fileID: 7933585742132360746, guid: 0f43c4b2aa72a614b93d7f67c10154d5,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 821fe81265d2b3b4b8da3cd4063700ff,
+    - target: {fileID: 7933585742132360746, guid: 0f43c4b2aa72a614b93d7f67c10154d5,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 821fe81265d2b3b4b8da3cd4063700ff,
+    - target: {fileID: 7933585742132360746, guid: 0f43c4b2aa72a614b93d7f67c10154d5,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 821fe81265d2b3b4b8da3cd4063700ff,
+    - target: {fileID: 7933585742132360746, guid: 0f43c4b2aa72a614b93d7f67c10154d5,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 821fe81265d2b3b4b8da3cd4063700ff,
+    - target: {fileID: 7933585742132360746, guid: 0f43c4b2aa72a614b93d7f67c10154d5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 821fe81265d2b3b4b8da3cd4063700ff,
+    - target: {fileID: 7933585742132360746, guid: 0f43c4b2aa72a614b93d7f67c10154d5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 821fe81265d2b3b4b8da3cd4063700ff,
+    - target: {fileID: 7933585742132360746, guid: 0f43c4b2aa72a614b93d7f67c10154d5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 821fe81265d2b3b4b8da3cd4063700ff,
-        type: 3}
-      propertyPath: m_Name
-      value: MetalicPress
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 821fe81265d2b3b4b8da3cd4063700ff, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 0f43c4b2aa72a614b93d7f67c10154d5, type: 3}
 --- !u!1001 &7690541041244499462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -476,4 +481,4 @@ SceneRoots:
   - {fileID: 1282112844}
   - {fileID: 419308016}
   - {fileID: 7690541041244499462}
-  - {fileID: 2127002260}
+  - {fileID: 1124861149557173738}
