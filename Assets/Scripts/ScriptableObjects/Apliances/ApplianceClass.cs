@@ -7,10 +7,10 @@ using UnityEngine;
 
 public class ApplianceClass : MonoBehaviour
 {
-    [SerializeField] private List<CraftingRecipe> recipes;
+    [SerializeField] private List<CraftingRecipe> recipes = new();
     public CraftingRecipe currentRecipe;
     public ResourceManager resourceManager;
-    public Inventory applianceInventory = new Inventory();
+    public Inventory applianceInventory = new();
     public GameObject itemHolder;
     bool working = false;
 
@@ -24,19 +24,14 @@ public class ApplianceClass : MonoBehaviour
     {
         resourceManager = ResourceManager.Instance;
         currentRecipe = recipes[0];
-        try
+
+
+        if (gameObject.transform.childCount > 0)
         {
-            
-            if (gameObject.transform.childCount > 0)
-            {
-                itemHolder = gameObject.transform.GetChild(0).gameObject;
-            }
-        }
-        catch (Exception ex)
-        {
-            Debug.LogException(ex);
+            itemHolder = gameObject.transform.GetChild(0).gameObject;
         }
     }
+    
 
     public void InsertItem(Resource resource)
     {
@@ -68,21 +63,23 @@ public class ApplianceClass : MonoBehaviour
     {
         List<ResourceData> requiredResources = new List<ResourceData>(currentRecipe.inputItemlist);
 
-        foreach(ResourceData item in requiredResources)
+        foreach(ResourceData item in currentRecipe.inputItemlist)
         {
             for(int i = 0; i <= applianceInventory.itemIds.Count; i++)
             {
                 if (applianceInventory.itemIds[i] == item.Id)
                 {
-                    applianceInventory.RemoveItem(applianceInventory.itemIds.IndexOf(item.Id));
                     requiredResources.Remove(item);
+                    applianceInventory.RemoveItem(applianceInventory.itemIds.IndexOf(item.Id));
                     break;
                 }
             }
         }
-        if(requiredResources.Count > 0)
+        Debug.Log(requiredResources.Count);
+        if (requiredResources.Count <= 0)
         {
-            
+            Destroy(itemHolder.GetComponentInChildren<Resource>().gameObject);
+            Debug.Log("Spawning");
             GameObject spawnedObject = Instantiate(currentRecipe.outputItem.prefab, itemHolder.transform);
             spawnedObject.transform.localPosition = Vector3.zero;
             spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;

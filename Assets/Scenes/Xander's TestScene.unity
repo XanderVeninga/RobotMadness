@@ -855,9 +855,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67551731ad6ec3f4c81676453b008586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recipes: []
+  currentRecipe: {fileID: 0}
   resourceManager: {fileID: 0}
   applianceInventory:
-    itemIDs: 
+    itemIds: 
   itemHolder: {fileID: 0}
 --- !u!1 &707997197
 GameObject:
@@ -1738,9 +1740,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67551731ad6ec3f4c81676453b008586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recipes:
+  - {fileID: 11400000, guid: 88f1b0e5cb72e3f4891f0dfef2954f82, type: 2}
+  currentRecipe: {fileID: 0}
   resourceManager: {fileID: 0}
   applianceInventory:
-    itemIDs: 
+    itemIds: 
   itemHolder: {fileID: 2119274212}
 --- !u!65 &1450451693
 BoxCollider:
