@@ -15,6 +15,11 @@ public class ApplianceClass : MonoBehaviour
     bool working = false;
     [SerializeField] private int maxItems;
 
+
+    public List<CraftingRecipe> GetRecipes()
+    {
+        return recipes;
+    }
     public bool Working
     {
         get { return working; }
