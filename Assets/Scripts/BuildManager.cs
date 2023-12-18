@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour
 {
     public static BuildManager Instance;
-    public List<ApplianceClass> applianceList = new List<ApplianceClass>();
+    public List<ApplianceClass> applianceList = new();
 
     public void Awake()
     {

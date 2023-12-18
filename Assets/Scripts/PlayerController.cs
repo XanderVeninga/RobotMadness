@@ -116,7 +116,6 @@ public class PlayerController : MonoBehaviour
                     }
                 }
                 #endregion
-                Debug.DrawLine(this.transform.position, target.transform.position);
             }
         }
         #endregion
@@ -161,6 +160,6 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("HoldingItem", false);
         }
-        transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(moveSpeed * Time.deltaTime * movement, Space.World);
     }
 }

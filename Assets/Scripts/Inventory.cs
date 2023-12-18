@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Inventory
 {
-    public List<int> itemIds = new List<int>();
+    public List<int> itemIds = new();
     ResourceManager resourceManager;
 
     public Inventory()
@@ -15,7 +15,7 @@ public class Inventory
     }
     public void AddItem(int id)
     {
-        itemIds.Add(id);
+d        itemIds.Add(id);
     }
     public void InsertItemAtTop(int id)
     {

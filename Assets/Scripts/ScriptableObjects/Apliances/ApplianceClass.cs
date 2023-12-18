@@ -69,7 +69,7 @@ public class ApplianceClass : MonoBehaviour
                 {
                     GameObject spawnedObject =
                         Instantiate(resourceManager.resources[applianceInventory.itemIds[0]].prefab,
-                        player.GetComponent<PlayerController>().resourceHolder.transform);
+                        itemHolder.transform);
                     spawnedObject.transform.localPosition = Vector3.zero;
                     spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;
                 }
@@ -80,7 +80,7 @@ public class ApplianceClass : MonoBehaviour
     
     public void Craft()
     {
-        List<ResourceData> requiredResources = new List<ResourceData>(currentRecipe.inputItemlist);
+        List<ResourceData> requiredResources = new(currentRecipe.inputItemlist);
 
         foreach(ResourceData item in currentRecipe.inputItemlist)
         {
@@ -89,7 +89,9 @@ public class ApplianceClass : MonoBehaviour
                 if (applianceInventory.itemIds[i] == item.Id)
                 {
                     requiredResources.Remove(item);
-                    applianceInventory.RemoveItem(applianceInventory.itemIds.IndexOf(item.Id));
+                    Debug.Log($"removing {item}");
+                    applianceInventory.RemoveItem(item.Id);
+                    Debug.Log(applianceInventory.itemIds.Count);
                     break;
                 }
             }

@@ -6,7 +6,7 @@ public class OrderManager : MonoBehaviour
 {
     private ResourceManager resourceManager;
     private BuildManager buildManager;
-    [SerializeField] public List<ResourceData> availableitems = new List<ResourceData>();
+    [SerializeField] public List<ResourceData> availableitems = new();
     [SerializeField] bool DebugOrder;
     private void Start()
     {
@@ -18,7 +18,7 @@ public class OrderManager : MonoBehaviour
     {
         foreach(ApplianceClass appliance in buildManager.applianceList)
         {
-            List<CraftingRecipe> recipes = new List<CraftingRecipe>(appliance.GetRecipes());
+            List<CraftingRecipe> recipes = new(appliance.GetRecipes());
             for(int i = 0; i < recipes.Count; i++)
             {
                 if (!availableitems.Contains(recipes[i].outputItem))
@@ -35,20 +35,10 @@ public class OrderManager : MonoBehaviour
             availableitems.Add(resourceManager.resources[itemID]);
         }
     }
-    private void Update()
-    {
-        if(DebugOrder)
-        {
-            GenerateOrder();
-            DebugOrder = false;
-        }
-    }
     public ClientOrder GenerateOrder()
     {
         int wantedID = Random.Range(0, availableitems.Count);
-        
-        ClientOrder order = new ClientOrder();
-        order.wantedItem = availableitems[wantedID];
+        ClientOrder order = new() { wantedItem = availableitems[wantedID]};
         Debug.Log(order.wantedItem);
         return order;
     }
