@@ -29,15 +29,15 @@ public class PlayerController : MonoBehaviour
 
         if (horizontalInput != 0 || verticalInput != 0)
         {
-            if(!animator.GetBool("Moving"))
+            if (!animator.GetBool("Moving"))
             {
                 animator.SetBool("Moving", true);
             }
-            
+
         }
         else if (verticalInput == 0 && horizontalInput == 0)
         {
-            if(animator.GetBool("Moving"))
+            if (animator.GetBool("Moving"))
             {
                 animator.SetBool("Moving", false);
             }
@@ -52,16 +52,17 @@ public class PlayerController : MonoBehaviour
         // Move and rotate the player
         MoveAndRotatePlayer(movement);
 
-        if(resourceHolder.transform.childCount == 1 && isHoldingItem)
+        if (resourceHolder.transform.childCount == 1 && isHoldingItem)
         {
             isHoldingItem = false;
         }
-        else if(resourceHolder.transform.childCount > 1 && !isHoldingItem)
+        else if (resourceHolder.transform.childCount > 1 && !isHoldingItem)
         {
             isHoldingItem = true;
         }
         #endregion
         #region Player Interactions
+        #region LeftMouse press
         //Get Input From MouseButtons and check for
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -102,7 +103,7 @@ public class PlayerController : MonoBehaviour
                         playerInventory.AddItem(resourceHolder.GetComponentInChildren<Resource>().data.Id);
                         isHoldingItem = true;
                     }
-                    else if(target.transform.gameObject.GetComponent<ApplianceClass>()) // get a potential item out of the appliance
+                    else if (target.transform.gameObject.GetComponent<ApplianceClass>()) // get a potential item out of the appliance
                     {
                         var appliance = target.transform.GetComponentInChildren<ApplianceClass>();
                         if (appliance.itemHolder.transform.GetChild(0) != null)
@@ -119,8 +120,26 @@ public class PlayerController : MonoBehaviour
             }
         }
         #endregion
+        #region RightMouse press
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            if (Physics.Raycast(this.transform.position, this.transform.forward, out RaycastHit target, pickupDistance))
+            {
+                if (target.transform.gameObject.GetComponent<ApplianceClass>())
+                {
+                    var appliance = target.transform.GetComponentInChildren<ApplianceClass>();
+                    appliance.CycleRecipes();
+                }
+                if(target.transform.gameObject.GetComponent<OrderManager>())
+                {
+                    var orderManager = target.transform.gameObject.GetComponent<OrderManager>();
+                    orderManager.GenerateOrder();
+                }
+            }
+        }
+        #endregion
+        #endregion
     }
-
     void MoveAndRotatePlayer(Vector3 movement)
     {
         // Check if there is any movement

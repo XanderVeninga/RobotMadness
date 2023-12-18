@@ -114,4 +114,17 @@ public class ApplianceClass : MonoBehaviour
         spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;
         applianceInventory.InsertItemAtTop(currentRecipe.outputItem.Id);
     }
+
+    public void CycleRecipes()
+    {
+        int oldIndex = recipes.IndexOf(currentRecipe);
+        try
+        {
+            currentRecipe = recipes[oldIndex + 1];
+        }
+        catch
+        {
+            currentRecipe = recipes[0];
+        }
+    }
 }
