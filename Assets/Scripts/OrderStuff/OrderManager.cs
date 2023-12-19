@@ -6,7 +6,8 @@ public class OrderManager : MonoBehaviour
 {
     private ResourceManager resourceManager;
     private BuildManager buildManager;
-    [SerializeField] public List<ResourceData> availableitems = new();
+    public List<ResourceData> availableitems = new();
+    public List<ClientOrder> orders = new();
     [SerializeField] bool DebugOrder;
     private void Start()
     {
@@ -38,8 +39,16 @@ public class OrderManager : MonoBehaviour
     public ClientOrder GenerateOrder()
     {
         int wantedID = Random.Range(0, availableitems.Count);
-        ClientOrder order = new() { wantedItem = availableitems[wantedID]};
+        ClientOrder order = new() {wantedItem = availableitems[wantedID]};
         Debug.Log(order.wantedItem);
+        orders.Add(order);
+        GameObject spawnedObject = Instantiate(order.wantedItem.prefab, gameObject.transform);
+        spawnedObject.transform.localPosition = new Vector3(0,1,0);
         return order;
+    }
+    public void ClearOrder(PlayerController player)
+    {
+        Destroy(player.resourceHolder.GetComponentInChildren<Resource>().gameObject);
+        Destroy(gameObject.GetComponentInChildren<Resource>().resourceObject);
     }
 }

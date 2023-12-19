@@ -15,7 +15,7 @@ public class Inventory
     }
     public void AddItem(int id)
     {
-d        itemIds.Add(id);
+        itemIds.Add(id);
     }
     public void InsertItemAtTop(int id)
     {

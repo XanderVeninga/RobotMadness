@@ -89,9 +89,25 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                     #endregion
+                    #region hit order terminal
+                    else if (target.transform.gameObject.GetComponent<OrderManager>()) // if its an appliance
+                    {
+                        var terminal = target.transform.gameObject.GetComponent<OrderManager>();
+                        for (int i = 0; i < terminal.orders.Count; i++)
+                        {
+                            if (terminal.orders[i].wantedItem == resourceHolder.GetComponentInChildren<Resource>().data)
+                            {
+                                terminal.ClearOrder(this);
+                                //add money
+                            }
+                        }
+                    }
+                    #endregion
                     #region hit conveyor
                     // if its a conveyor belt
                     #endregion
+                   
+
                 }
                 #endregion
                 #region Not Holding Item
@@ -129,7 +145,7 @@ public class PlayerController : MonoBehaviour
                     var appliance = target.transform.GetComponentInChildren<ApplianceClass>();
                     appliance.CycleRecipes();
                 }
-                if(target.transform.gameObject.GetComponent<OrderManager>())
+                if (target.transform.gameObject.GetComponent<OrderManager>())
                 {
                     var orderManager = target.transform.gameObject.GetComponent<OrderManager>();
                     orderManager.GenerateOrder();
@@ -156,7 +172,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("HoldingItem", true);
         }
-        else if(!isHoldingItem && animator.GetBool("HoldingItem"))
+        else if (!isHoldingItem && animator.GetBool("HoldingItem"))
         {
             animator.SetBool("HoldingItem", false);
         }

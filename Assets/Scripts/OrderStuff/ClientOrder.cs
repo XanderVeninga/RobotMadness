@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClientOrder : MonoBehaviour
+[Serializable]
+public class ClientOrder
 {
-    public ResourceData wantedItem;
+    [SerializeField] public ResourceData wantedItem;
 }
