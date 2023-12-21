@@ -13,12 +13,16 @@ public class PlayerController : MonoBehaviour
     public Inventory playerInventory;
     [SerializeField] bool isHoldingItem = false;
     [SerializeField] Animator animator;
-
+    [SerializeField] ParticleSystem particle;
+    [SerializeField] int parEmOn, parEmOf = 0;
+    private ParticleSystem.EmissionModule em;
 
 
     private void Start()
     {
         playerInventory = new Inventory();
+        em = particle.emission;
+        em.enabled = true;
     }
     void Update()
     {
@@ -33,6 +37,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("Moving", true);
             }
+            em.rate = parEmOn;
 
         }
         else if (verticalInput == 0 && horizontalInput == 0)
@@ -41,6 +46,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("Moving", false);
             }
+            em.rate = parEmOf;
         }
         Vector3 right = cameraTransform.right;
         Vector3 forward = cameraTransform.forward;
