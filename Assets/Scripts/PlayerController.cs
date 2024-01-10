@@ -90,8 +90,11 @@ public class PlayerController : MonoBehaviour
                         var spawner = target.transform.gameObject.GetComponent<ResourceSpawner>();
                         if (resourceHolder.transform.GetComponentInChildren<Resource>().data.Id == spawner.resourceToSpawn.Id)
                         {
-                            Destroy(resourceHolder.transform.GetChild(1).gameObject);
-                            playerInventory.RemoveItem(0);
+                            bool removeItem = spawner.CheckResource(resourceHolder.transform.GetComponentInChildren<Resource>());
+                            if (removeItem)
+                            {
+                                playerInventory.RemoveItem(0);
+                            }
                         }
                     }
                     #endregion
@@ -99,20 +102,20 @@ public class PlayerController : MonoBehaviour
                     else if (target.transform.gameObject.GetComponent<OrderManager>()) // if its an appliance
                     {
                         var terminal = target.transform.gameObject.GetComponent<OrderManager>();
-                        for (int i = 0; i < terminal.orders.Count; i++)
+                        bool doDeposit = terminal.CheckOrder(resourceHolder.GetComponentInChildren<Resource>());
+                        if (doDeposit)
                         {
-                            if (terminal.orders[i].wantedItem == resourceHolder.GetComponentInChildren<Resource>().data)
-                            {
-                                terminal.ClearOrder(this);
-                                //add money
-                            }
+                            Debug.Log("yesn't");
+                            playerInventory.RemoveItem(0);
+                            Destroy(resourceHolder.GetComponentInChildren<Resource>().gameObject);
+                            
                         }
                     }
                     #endregion
                     #region hit conveyor
                     // if its a conveyor belt
                     #endregion
-                   
+
 
                 }
                 #endregion

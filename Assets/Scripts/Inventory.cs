@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -23,7 +24,16 @@ public class Inventory
     }
     public void RemoveItem(int id)
     {
-        itemIds.Remove(id);
+        if(itemIds.Count == 1)
+        {
+            itemIds.Clear();
+        }
+        else
+        {
+            itemIds.Remove(id);
+        }
+        
+        Debug.Log("removed");
     }
     public ResourceData GetItemData(int id)
     {

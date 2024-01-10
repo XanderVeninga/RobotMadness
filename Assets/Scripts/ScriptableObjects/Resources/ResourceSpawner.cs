@@ -13,4 +13,17 @@ public class ResourceSpawner : MonoBehaviour
         spawnedObject.transform.localPosition = Vector3.zero;
         spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;
     }
+
+    public bool CheckResource(Resource resource)
+    {
+        if(resource.data == resourceToSpawn)
+        {
+            Destroy(resource.gameObject);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

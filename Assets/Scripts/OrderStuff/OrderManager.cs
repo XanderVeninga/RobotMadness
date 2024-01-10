@@ -46,9 +46,22 @@ public class OrderManager : MonoBehaviour
         spawnedObject.transform.localPosition = new Vector3(0,1,0);
         return order;
     }
-    public void ClearOrder(PlayerController player)
+
+    public bool CheckOrder(Resource resource)
     {
-        Destroy(player.resourceHolder.GetComponentInChildren<Resource>().gameObject);
-        Destroy(gameObject.GetComponentInChildren<Resource>().resourceObject);
+        for (int i = 0; i < orders.Count; i++)
+        {
+            if (orders[i].wantedItem == resource.data)
+            {
+                RemoveOrder(orders[i]);
+                //add money
+                return true;
+            }
+        }
+        return false;
+    }
+    public void RemoveOrder(ClientOrder order)
+    {
+        orders.Remove(order);
     }
 }
