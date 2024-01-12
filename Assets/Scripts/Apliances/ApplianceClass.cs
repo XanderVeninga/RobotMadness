@@ -32,7 +32,7 @@ public class ApplianceClass : MonoBehaviour
         currentRecipe = recipes[0];
 
 
-        if (gameObject.transform.childCount > 0)
+        if (gameObject.transform.childCount > 0 || itemHolder == null)
         {
             itemHolder = gameObject.transform.GetChild(0).gameObject;
         }

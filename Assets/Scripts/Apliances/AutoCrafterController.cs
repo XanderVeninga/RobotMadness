@@ -8,7 +8,7 @@ public class AutoCrafterController : ApplianceClass
     public override void InsertItem(Resource resource, PlayerController player)
     {
         base.InsertItem(resource, player);
-        if(applianceInventory.itemIds.Count > 1)
+        if(applianceInventory.itemIds.Count >= 1)
         {
             GameObject spawnedObject =
                         Instantiate(resourceManager.resources[applianceInventory.itemIds[1]].prefab,
