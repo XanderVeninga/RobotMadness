@@ -9,11 +9,17 @@ public class OrderManager : MonoBehaviour
     public List<ResourceData> availableitems = new();
     public List<ClientOrder> orders = new();
     [SerializeField] bool DebugOrder;
+    public float timeSinceStart;
     private void Start()
     {
         resourceManager = ResourceManager.Instance;
         buildManager = BuildManager.Instance;
         AddStartItems();
+    }
+
+    private void Update()
+    {
+        timeSinceStart = Time.realtimeSinceStartup;
     }
     public void AddStartItems()
     {
@@ -39,7 +45,7 @@ public class OrderManager : MonoBehaviour
     public ClientOrder GenerateOrder()
     {
         int wantedID = Random.Range(0, availableitems.Count);
-        ClientOrder order = new() {wantedItem = availableitems[wantedID]};
+        ClientOrder order = new() { wantedItem = availableitems[wantedID], timeCreated = timeSinceStart };
         Debug.Log(order.wantedItem);
         orders.Add(order);
         GameObject spawnedObject = Instantiate(order.wantedItem.prefab, gameObject.transform);

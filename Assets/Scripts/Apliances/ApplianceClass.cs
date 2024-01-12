@@ -39,7 +39,7 @@ public class ApplianceClass : MonoBehaviour
     }
     
 
-    public void InsertItem(Resource resource, PlayerController player)
+    public virtual void InsertItem(Resource resource, PlayerController player)
     {
         if(applianceInventory.itemIds.Count < maxItems)
         {
@@ -58,7 +58,7 @@ public class ApplianceClass : MonoBehaviour
             Craft();
         }
     }
-    public void RemoveItem(GameObject player)
+    public virtual void RemoveItem(GameObject player)
     {
         if(applianceInventory.itemIds.Count > 0)
         {
@@ -74,11 +74,10 @@ public class ApplianceClass : MonoBehaviour
                     spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;
                 }
             }
-            
         }
     }
     
-    public void Craft()
+    public virtual void Craft()
     {
         List<ResourceData> requiredResources = new(currentRecipe.inputItemlist);
 
@@ -102,7 +101,7 @@ public class ApplianceClass : MonoBehaviour
             
         }
     }
-    public void ItemSwapOnAnimation()
+    public virtual void ItemSwapOnAnimation()
     {
         for (int d = 0; d < itemHolder.transform.childCount; d++)
         {
