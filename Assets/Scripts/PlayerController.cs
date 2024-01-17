@@ -104,8 +104,7 @@ public class PlayerController : MonoBehaviour
                         var terminal = target.transform.gameObject.GetComponent<OrderManager>();
                         bool doDeposit = terminal.CheckOrder(resourceHolder.GetComponentInChildren<Resource>());
                         if (doDeposit)
-                        {
-                            Debug.Log("yesn't");
+                        { 
                             playerInventory.RemoveItem(0);
                             Destroy(resourceHolder.GetComponentInChildren<Resource>().gameObject);
                             

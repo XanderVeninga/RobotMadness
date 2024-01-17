@@ -12,10 +12,14 @@ public class ApplianceClass : MonoBehaviour
     public ResourceManager resourceManager;
     public Inventory applianceInventory = new();
     public GameObject itemHolder;
-    bool working = false;
+    private bool working = false;
     [SerializeField] private int maxItems;
 
 
+    public int GetMaxItems()
+    {
+        return maxItems;
+    }
     public List<CraftingRecipe> GetRecipes()
     {
         return recipes;
@@ -30,8 +34,6 @@ public class ApplianceClass : MonoBehaviour
     {
         resourceManager = ResourceManager.Instance;
         currentRecipe = recipes[0];
-
-
         if (gameObject.transform.childCount > 0 || itemHolder == null)
         {
             itemHolder = gameObject.transform.GetChild(0).gameObject;
@@ -41,7 +43,7 @@ public class ApplianceClass : MonoBehaviour
 
     public virtual void InsertItem(Resource resource, PlayerController player)
     {
-        if(applianceInventory.itemIds.Count < maxItems)
+        if(applianceInventory.itemIds.Count < GetMaxItems())
         {
             if (itemHolder.GetComponentInChildren<Resource>() == null)
             {
@@ -88,9 +90,7 @@ public class ApplianceClass : MonoBehaviour
                 if (applianceInventory.itemIds[i] == item.Id)
                 {
                     requiredResources.Remove(item);
-                    Debug.Log($"removing {item}");
                     applianceInventory.RemoveItem(item.Id);
-                    Debug.Log(applianceInventory.itemIds.Count);
                     break;
                 }
             }

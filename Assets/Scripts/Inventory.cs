@@ -32,8 +32,6 @@ public class Inventory
         {
             itemIds.Remove(id);
         }
-        
-        Debug.Log("removed");
     }
     public ResourceData GetItemData(int id)
     {
