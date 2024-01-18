@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Transform cameraTransform;
+    [SerializeField] private Transform raycastShooter;
     [SerializeField] private float pickupDistance;
     public GameObject resourceHolder;
     public Inventory playerInventory;
@@ -70,10 +71,11 @@ public class PlayerController : MonoBehaviour
         #region Player Interactions
         #region LeftMouse press
         //Get Input From MouseButtons and check for
+        
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (Physics.Raycast(this.transform.position, this.transform.forward, out RaycastHit target, pickupDistance))
-            {
+            if (Physics.Raycast(raycastShooter.position, raycastShooter.forward, out RaycastHit target, pickupDistance))
+            {               
                 #region Holding Item
                 if (isHoldingItem) // holding an item
                 {
@@ -146,7 +148,7 @@ public class PlayerController : MonoBehaviour
         #region RightMouse press
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            if (Physics.Raycast(this.transform.position, this.transform.forward, out RaycastHit target, pickupDistance))
+            if (Physics.Raycast(raycastShooter.position, raycastShooter.forward, out RaycastHit target, pickupDistance))
             {
                 if (target.transform.gameObject.GetComponent<ApplianceClass>())
                 {

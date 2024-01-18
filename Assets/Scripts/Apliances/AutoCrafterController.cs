@@ -9,17 +9,20 @@ public class AutoCrafterController : ApplianceClass
     {
         if (applianceInventory.itemIds.Count < GetMaxItems())
         {
-            
+            if (itemHolder.GetComponentInChildren<Resource>() == null)
+            {
+                applianceInventory.AddItem(resource.data.Id);
+                resource.resourceObject.transform.parent = itemHolder.transform;
+                itemHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            }
+            else if (itemHolder2.GetComponentInChildren<Resource>() == null)
+            {
+                applianceInventory.AddItem(resource.data.Id);
+                resource.resourceObject.transform.parent = itemHolder2.transform;
+                itemHolder2.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            }
             player.playerInventory.RemoveItem(player.playerInventory.itemIds[0]);
             Craft();
-        }
-        if (applianceInventory.itemIds.Count >= 1)
-        {
-            GameObject spawnedObject =
-                        Instantiate(resourceManager.resources[applianceInventory.itemIds[1]].prefab,
-                        itemHolder2.transform);
-            spawnedObject.transform.localPosition = Vector3.zero;
-            spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;
         }
     }
     public override void RemoveItem(GameObject player)
@@ -36,5 +39,5 @@ public class AutoCrafterController : ApplianceClass
         base.ItemSwapOnAnimation();
     }
 
-    
+
 }

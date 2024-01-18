@@ -14,8 +14,6 @@ public class ApplianceClass : MonoBehaviour
     public GameObject itemHolder;
     private bool working = false;
     [SerializeField] private int maxItems;
-
-
     public int GetMaxItems()
     {
         return maxItems;
@@ -50,11 +48,6 @@ public class ApplianceClass : MonoBehaviour
                 applianceInventory.AddItem(resource.data.Id);
                 resource.resourceObject.transform.parent = itemHolder.transform;
                 itemHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-            }
-            else
-            {
-                applianceInventory.AddItem(resource.data.Id);
-                Destroy(resource.gameObject);
             }
             player.playerInventory.RemoveItem(player.playerInventory.itemIds[0]);
             Craft();
@@ -97,8 +90,14 @@ public class ApplianceClass : MonoBehaviour
         }
         if (requiredResources.Count <= 0)
         {
-            gameObject.GetComponent<Animation>().Play();
-            
+            if (gameObject.GetComponent<Animation>() != null)
+            {
+                gameObject.GetComponent<Animation>().Play();
+            }
+            else
+            {
+                gameObject.GetComponent<Animator>().SetTrigger("MachineOn");
+            }
         }
     }
     public virtual void ItemSwapOnAnimation()
