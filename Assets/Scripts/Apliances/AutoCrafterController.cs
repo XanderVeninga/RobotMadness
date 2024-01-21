@@ -25,14 +25,17 @@ public class AutoCrafterController : ApplianceClass
             Craft();
         }
     }
-    public override void RemoveItem(GameObject player)
+    public override void RemoveItem()
     {
-        base.RemoveItem(player);
-        Destroy(itemHolder2.GetComponentInChildren<Resource>().gameObject);
+        base.RemoveItem();
     }
     public override void Craft()
     {
         base.Craft();
+        if (this.applianceInventory.itemIds.Contains(itemHolder2.GetComponentInChildren<Resource>().data.Id))
+        {
+            Destroy(itemHolder2.GetComponentInChildren<Resource>().gameObject);
+        }
     }
     public override void ItemSwapOnAnimation()
     {

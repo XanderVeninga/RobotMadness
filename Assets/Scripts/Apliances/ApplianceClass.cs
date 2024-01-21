@@ -53,7 +53,7 @@ public class ApplianceClass : MonoBehaviour
             Craft();
         }
     }
-    public virtual void RemoveItem(GameObject player)
+    public virtual void RemoveItem()
     {
         if(applianceInventory.itemIds.Count > 0)
         {
@@ -90,6 +90,7 @@ public class ApplianceClass : MonoBehaviour
         }
         if (requiredResources.Count <= 0)
         {
+            working = true;
             if (gameObject.GetComponent<Animation>() != null)
             {
                 gameObject.GetComponent<Animation>().Play();
@@ -113,6 +114,7 @@ public class ApplianceClass : MonoBehaviour
         spawnedObject.transform.localPosition = Vector3.zero;
         spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;
         applianceInventory.InsertItemAtTop(currentRecipe.outputItem.Id);
+        working = false;
     }
 
     public void CycleRecipes()

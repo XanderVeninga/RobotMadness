@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e547a326d682a47b756b793d567609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceToSpawn: {fileID: 11400000, guid: c597efe48eb16984b888f0065dd13a11, type: 2}
+  resourceToSpawn: {fileID: 11400000, guid: cdefe2609f00eba48b7e8af5d5c9673d, type: 2}
 --- !u!65 &258914183
 BoxCollider:
   m_ObjectHideFlags: 0

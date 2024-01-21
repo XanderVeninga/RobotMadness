@@ -83,7 +83,10 @@ public class PlayerController : MonoBehaviour
                     if (target.transform.gameObject.GetComponent<ApplianceClass>()) // if its an appliance
                     {
                         var appliance = target.transform.gameObject.GetComponent<ApplianceClass>();
-                        appliance.InsertItem(resourceHolder.transform.GetComponentInChildren<Resource>(), this);
+                        if (!appliance.Working)
+                        {
+                            appliance.InsertItem(resourceHolder.transform.GetComponentInChildren<Resource>(), this);
+                        }
                     }
                     #endregion
                     #region hit resource spawner
@@ -132,12 +135,15 @@ public class PlayerController : MonoBehaviour
                     else if (target.transform.gameObject.GetComponent<ApplianceClass>()) // get a potential item out of the appliance
                     {
                         var appliance = target.transform.GetComponentInChildren<ApplianceClass>();
-                        if (appliance.itemHolder.transform.GetChild(0) != null)
+                        if(!appliance.Working)
                         {
-                            playerInventory.AddItem(appliance.itemHolder.transform.GetComponentInChildren<Resource>().data.Id);
-                            appliance.itemHolder.transform.GetChild(0).parent = resourceHolder.transform;
-                            resourceHolder.transform.GetChild(1).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-                            appliance.RemoveItem(this.gameObject);
+                            if (appliance.itemHolder.transform.GetChild(0) != null)
+                            {
+                                playerInventory.AddItem(appliance.itemHolder.transform.GetComponentInChildren<Resource>().data.Id);
+                                appliance.itemHolder.transform.GetChild(0).parent = resourceHolder.transform;
+                                resourceHolder.transform.GetChild(1).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                                appliance.RemoveItem();
+                            }
                         }
                     }
                 }

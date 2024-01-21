@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Battery
   m_EditorClassIdentifier: 
   inputItemlist:
-  - {fileID: 11400000, guid: 6ee3031213ae9874d9dc907f60b43c35, type: 2}
+  - {fileID: 11400000, guid: 7fb78a4836899824ab4abc01a33cbdc0, type: 2}
   - {fileID: 11400000, guid: cdefe2609f00eba48b7e8af5d5c9673d, type: 2}
   outputItem: {fileID: 11400000, guid: a6c49e7bd56e10349a3d4be2f05b9a70, type: 2}
