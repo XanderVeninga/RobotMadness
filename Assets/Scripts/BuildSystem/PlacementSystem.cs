@@ -61,4 +61,12 @@ public class PlacementSystem : MonoBehaviour
         inputManager.OnClicked -= PlaceStructure;
         inputManager.OnExit -= StopPlacement;
     }
+    private void Update()
+    {
+        bool placementValidity = CheckPlacementValidity(gridPosistion, selectedObjectIndex);
+        if (!placementValidity)
+        {
+            return;
+        }
+    }
 }
