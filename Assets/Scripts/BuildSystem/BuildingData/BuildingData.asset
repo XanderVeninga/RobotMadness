@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ec635dfdac40d4d9964618d58ad6a8, type: 3}
+  m_Name: BuildingData
+  m_EditorClassIdentifier: 
+  objectsData:
+  - <Name>k__BackingField: Press
+    <ID>k__BackingField: 0
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 2779237036841414110, guid: a4b03ac25ece82342982bf37ee780016,
+      type: 3}
+  - <Name>k__BackingField: Furnace
+    <ID>k__BackingField: 1
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 1247100736725508015, guid: 44728ace71a249341af1f5c716fbd863,
+      type: 3}
+  - <Name>k__BackingField: Auto Crafter
+    <ID>k__BackingField: 2
+    <Size>k__BackingField: {x: 2, y: 2}
+    <Prefab>k__BackingField: {fileID: 577001526546174458, guid: d1469d5f20576e2468bbc3669c3d5975,
+      type: 3}

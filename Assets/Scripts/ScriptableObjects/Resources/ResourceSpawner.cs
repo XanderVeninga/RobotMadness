@@ -6,7 +6,6 @@ public class ResourceSpawner : MonoBehaviour
 {
     public ResourceData resourceToSpawn;
     private GameObject spawnedObject;
-    
     public void SpawnResource(GameObject player)
     {
         spawnedObject = Instantiate(resourceToSpawn.prefab, player.GetComponent<PlayerController>().resourceHolder.transform);
