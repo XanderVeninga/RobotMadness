@@ -8,4 +8,5 @@ using UnityEngine;
 public class BluePrintData : ScriptableObject
 {
     [field: SerializeField] public int ID { get; private set;}
+    [field: SerializeField] public int BlueprintCost { get; private set; }
 }

@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private Transform raycastShooter;
+    public Transform buildChecker;
     [SerializeField] private float pickupDistance;
     public GameObject resourceHolder;
     public Inventory playerInventory;
@@ -161,10 +162,15 @@ public class PlayerController : MonoBehaviour
                     var appliance = target.transform.GetComponentInChildren<ApplianceClass>();
                     appliance.CycleRecipes();
                 }
-                if (target.transform.gameObject.GetComponent<OrderManager>())
+                else if (target.transform.gameObject.GetComponent<OrderManager>())
                 {
                     var orderManager = target.transform.gameObject.GetComponent<OrderManager>();
                     orderManager.GenerateOrder();
+                }
+                else if (target.transform.GetComponent<BluePrintScript>())
+                {
+                    var bluePrint =  target.transform.GetComponent<BluePrintScript>();
+                    bluePrint.ActivateBluePrint();
                 }
             }
         }

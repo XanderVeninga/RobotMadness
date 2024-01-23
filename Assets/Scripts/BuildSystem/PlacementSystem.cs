@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlacementSystem : MonoBehaviour
 {
-    [SerializeField] GameObject mouseIndicator, cellIndicator;
+    [SerializeField] GameObject playerObject;
     [SerializeField] private BuildInputManager inputManager;
     [SerializeField] Grid grid;
     [SerializeField] ObjectDatabaseSO database;
@@ -28,19 +28,15 @@ public class PlacementSystem : MonoBehaviour
         }
         gridVisualisation.SetActive(true);
         inputManager.OnClicked += PlaceStructure;
-        inputManager.OnExit += StopPlacement; 
     }
 
     private void PlaceStructure()
     {
-        if(inputManager.IsPointerOverUI())
-        {
-            return;
-        }
-        Vector3 mousePosistion = inputManager.GetSelectedMapPosistion();
-        Vector3Int gridPosistion = grid.WorldToCell(mousePosistion);
+        Vector3 playerPosistion = inputManager.GetSelectedMapPosistion();
+        Vector3Int gridPosistion = grid.WorldToCell(playerPosistion);
         GameObject newBuilding = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
         newBuilding.transform.position = grid.CellToWorld(gridPosistion);
+        StopPlacement();
     }
 
     private void StopPlacement()
@@ -49,17 +45,5 @@ public class PlacementSystem : MonoBehaviour
         gridVisualisation.SetActive(false);
         inputManager.OnClicked -= PlaceStructure;
         inputManager.OnExit -= StopPlacement;
-    }
-
-    private void Update()
-    {
-        if(selectedObjectIndex < 0)
-        {
-            return;
-        }
-        Vector3 mousePosistion = inputManager.GetSelectedMapPosistion();
-        Vector3Int gridPosistion = grid.WorldToCell(mousePosistion);
-        mouseIndicator.transform.position = mousePosistion;
-        cellIndicator.transform.position = grid.CellToWorld(gridPosistion);
     }
 }

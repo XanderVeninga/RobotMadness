@@ -28,3 +28,8 @@ MonoBehaviour:
     <Size>k__BackingField: {x: 2, y: 2}
     <Prefab>k__BackingField: {fileID: 577001526546174458, guid: d1469d5f20576e2468bbc3669c3d5975,
       type: 3}
+  - <Name>k__BackingField: Converyor Belt
+    <ID>k__BackingField: 3
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 3796948387410248739, guid: 339a7339d84ca6440ad299c4c6eb74d8,
+      type: 3}

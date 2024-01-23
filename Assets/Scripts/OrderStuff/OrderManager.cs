@@ -23,15 +23,18 @@ public class OrderManager : MonoBehaviour
     }
     public void AddStartItems()
     {
-        foreach(ApplianceClass appliance in buildManager.applianceList)
+        if(buildManager.applianceList.Count >= 1)
         {
-            List<CraftingRecipe> recipes = new(appliance.GetRecipes());
-            for(int i = 0; i < recipes.Count; i++)
+            foreach (ApplianceClass appliance in buildManager.applianceList)
             {
-                if (!availableitems.Contains(recipes[i].outputItem))
+                List<CraftingRecipe> recipes = new(appliance.GetRecipes());
+                for (int i = 0; i < recipes.Count; i++)
                 {
-                    availableitems.Add(recipes[i].outputItem);
-                }                
+                    if (!availableitems.Contains(recipes[i].outputItem))
+                    {
+                        availableitems.Add(recipes[i].outputItem);
+                    }
+                }
             }
         }
     }

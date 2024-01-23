@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class BuildInputManager : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
+    public PlayerController _playerController;
     private Vector3 lastPosistion;
     [SerializeField] LayerMask placementMask;
 
@@ -18,27 +19,23 @@ public class BuildInputManager : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetKey(KeyCode.Mouse0))
         {
-            OnClicked?.Invoke();
-        }
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            OnExit?.Invoke();
+            if (Physics.Raycast(_playerController.buildChecker.position, _playerController.buildChecker.forward, 1000, placementMask))
+            {
+                OnClicked?.Invoke();
+            }
         }
     }
-    public bool IsPointerOverUI()
-        => EventSystem.current.IsPointerOverGameObject();
     
     public Vector3 GetSelectedMapPosistion()
     {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = _camera.nearClipPlane;
-        Ray ray = _camera.ScreenPointToRay(mousePos);
-        if(Physics.Raycast(ray, out RaycastHit target, 1000, placementMask))
+        Debug.DrawRay(_playerController.buildChecker.position, _playerController.buildChecker.forward, Color.red, 10000);
+        if (Physics.Raycast(_playerController.buildChecker.position, _playerController.buildChecker.forward, out RaycastHit target, 1000, placementMask))
         {
             lastPosistion = target.point;
         }
+        lastPosistion = new Vector3(lastPosistion.x + 0.5f, lastPosistion.y, lastPosistion.z + 0.5f);
         return lastPosistion;
     }
 }
