@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
                         var appliance = target.transform.GetComponentInChildren<ApplianceClass>();
                         if(!appliance.Working)
                         {
-                            if (appliance.itemHolder.transform.GetChild(0) != null)
+                            if (appliance.itemHolder.transform.GetComponentInChildren<Resource>())
                             {
                                 playerInventory.AddItem(appliance.itemHolder.transform.GetComponentInChildren<Resource>().data.Id);
                                 appliance.itemHolder.transform.GetChild(0).parent = resourceHolder.transform;

@@ -369,7 +369,7 @@ PrefabInstance:
         type: 3}
       propertyPath: bluePrintData
       value: 
-      objectReference: {fileID: 11400000, guid: 7c41036db99c80644a3c63406140e408,
+      objectReference: {fileID: 11400000, guid: a4a8e31c073ce3844a5a6ea6290978e5,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -573,6 +573,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7252555122081792398, guid: c3f5647ccc6e33c40b006435909b3dae,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7350188645519835703, guid: c3f5647ccc6e33c40b006435909b3dae,
         type: 3}
       propertyPath: m_Name
@@ -581,7 +586,7 @@ PrefabInstance:
     - target: {fileID: 7875332357532784781, guid: c3f5647ccc6e33c40b006435909b3dae,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12
+      value: -12.67
       objectReference: {fileID: 0}
     - target: {fileID: 7875332357532784781, guid: c3f5647ccc6e33c40b006435909b3dae,
         type: 3}
@@ -591,7 +596,7 @@ PrefabInstance:
     - target: {fileID: 7875332357532784781, guid: c3f5647ccc6e33c40b006435909b3dae,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.4678807
+      value: 5.25
       objectReference: {fileID: 0}
     - target: {fileID: 7875332357532784781, guid: c3f5647ccc6e33c40b006435909b3dae,
         type: 3}
@@ -2303,6 +2308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec95496872401994ea7f66dd05f89897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 2, y: 2}
   _camera: {fileID: 466744961}
   _playerController: {fileID: 78120483}
   placementMask:
