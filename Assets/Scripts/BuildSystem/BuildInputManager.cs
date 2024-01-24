@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class BuildInputManager : MonoBehaviour
 {
+    [SerializeField] private Vector2 offset;
     [SerializeField] private Camera _camera;
     public PlayerController _playerController;
     private Vector3 lastPosistion;
@@ -30,12 +31,11 @@ public class BuildInputManager : MonoBehaviour
     
     public Vector3 GetSelectedMapPosistion()
     {
-        Debug.DrawRay(_playerController.buildChecker.position, _playerController.buildChecker.forward, Color.red, 10000);
         if (Physics.Raycast(_playerController.buildChecker.position, _playerController.buildChecker.forward, out RaycastHit target, 1000, placementMask))
         {
             lastPosistion = target.point;
         }
-        lastPosistion = new Vector3(lastPosistion.x + 0.5f, lastPosistion.y, lastPosistion.z + 0.5f);
+        lastPosistion = new Vector3(lastPosistion.x + offset.x, lastPosistion.y, lastPosistion.z + offset.y);
         return lastPosistion;
     }
 }

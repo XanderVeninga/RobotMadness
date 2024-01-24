@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3006ff5948db9ad4cb326c76829d9896, type: 3}
   m_Name: AutoCrafter
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: 0
+  <ID>k__BackingField: 2
   <BlueprintCost>k__BackingField: 0

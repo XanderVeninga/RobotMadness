@@ -7,13 +7,15 @@ using UnityEngine;
 public class PlacementSystem : MonoBehaviour
 {
     [SerializeField] GameObject playerObject;
+    public Material[] materials;
     [SerializeField] private BuildInputManager inputManager;
     [SerializeField] Grid grid;
     [SerializeField] ObjectDatabaseSO database;
     private int selectedObjectIndex = -1;
     [SerializeField] private GameObject gridVisualisation;
+    [SerializeField] private GameObject placementIndicator;
     private GridData gridData;
-    private Renderer previewRenderer;
+    private List<GameObject> placedObjects = new();
 
     private void Start()
     {
@@ -31,6 +33,9 @@ public class PlacementSystem : MonoBehaviour
             Debug.LogError($"No ID found {ID}");
             return;
         }
+        placementIndicator = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
+        placementIndicator.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
+        materials[0] = placementIndicator.transform.GetChild(0).GetComponent<Renderer>().material;
         gridVisualisation.SetActive(true);
         inputManager.OnClicked += PlaceStructure;
     }
@@ -46,12 +51,20 @@ public class PlacementSystem : MonoBehaviour
         }
         GameObject newBuilding = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
         newBuilding.transform.position = grid.CellToWorld(gridPosistion);
+        placedObjects.Add(newBuilding);
+        GridData selectedData = gridData;
+        selectedData.AddObjectAt(gridPosistion, database.objectsData[selectedObjectIndex].Size, database.objectsData[selectedObjectIndex].ID, placedObjects.Count-1);
+        placementIndicator.transform.GetChild(0).GetComponent<Renderer>().material = materials[0];
+        placementIndicator.transform.GetChild(0).GetComponent<BoxCollider>().enabled = true;
+        Destroy(placementIndicator);
         StopPlacement();
     }
 
     private bool CheckPlacementValidity(Vector3Int gridPosistion, int selectedObjectIndex)
     {
-        throw new NotImplementedException();
+        GridData selectedData = gridData;
+
+        return selectedData.CanPlaceObjectAt(gridPosistion, database.objectsData[selectedObjectIndex].Size);
     }
 
     private void StopPlacement()
@@ -63,10 +76,17 @@ public class PlacementSystem : MonoBehaviour
     }
     private void Update()
     {
-        bool placementValidity = CheckPlacementValidity(gridPosistion, selectedObjectIndex);
-        if (!placementValidity)
+        if (selectedObjectIndex < 0)
         {
             return;
         }
+        Vector3 playerPosistion = inputManager.GetSelectedMapPosistion();
+        Vector3Int gridPosistion = grid.WorldToCell(playerPosistion);
+        if(placementIndicator != null)
+        {
+            placementIndicator.transform.position = grid.CellToWorld(gridPosistion);
+        }
+        bool placementValidity = CheckPlacementValidity(gridPosistion, selectedObjectIndex);
+        placementIndicator.transform.GetChild(0).GetComponent<Renderer>().material = placementValidity ? materials[1] : materials[2];
     }
 }
