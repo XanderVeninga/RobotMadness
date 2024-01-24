@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Highlight
+  m_Name: Highlight BLUE
   m_Shader: {fileID: -6465566751694194690, guid: fde55bd15f853214bb28dc8548c8f97b,
     type: 3}
   m_Parent: {fileID: 0}
@@ -133,9 +133,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _ALpha0: {r: 1, g: 0.009691365, b: 0, a: 0}
+    - _ALpha0: {r: 0, g: 0.2797284, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 0.028497314, b: 0, a: 1}
+    - _Color: {r: 0, g: 0.6366434, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tiling: {r: 20, g: 64, b: 0, a: 0}
