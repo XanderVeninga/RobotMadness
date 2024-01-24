@@ -5,24 +5,41 @@ using UnityEngine;
 public class AutoCrafterController : ApplianceClass
 {
     public GameObject itemHolder2;
-    public override void InsertItem(Resource resource, PlayerController player)
+    public override void InsertItem(Resource resource, GameObject source)
     {
-        if (applianceInventory.itemIds.Count < GetMaxItems())
+        if (source.GetComponent<ConveyorScript>())
         {
-            if (itemHolder.GetComponentInChildren<Resource>() == null)
+            if (applianceInventory.itemIds.Count < GetMaxItems())
             {
-                applianceInventory.AddItem(resource.data.Id);
-                resource.resourceObject.transform.parent = itemHolder.transform;
-                itemHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                if (itemHolder.GetComponentInChildren<Resource>() == null)
+                {
+                    applianceInventory.AddItem(resource.data.Id);
+                    resource.resourceObject.transform.parent = itemHolder.transform;
+                    itemHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                }
+                Craft();
             }
-            else if (itemHolder2.GetComponentInChildren<Resource>() == null)
+        }
+        if (source.GetComponent<PlayerController>())
+        {
+            var player = source.GetComponent<PlayerController>();
+            if (applianceInventory.itemIds.Count < GetMaxItems())
             {
-                applianceInventory.AddItem(resource.data.Id);
-                resource.resourceObject.transform.parent = itemHolder2.transform;
-                itemHolder2.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                if (itemHolder.GetComponentInChildren<Resource>() == null)
+                {
+                    applianceInventory.AddItem(resource.data.Id);
+                    resource.resourceObject.transform.parent = itemHolder.transform;
+                    itemHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                }
+                else if (itemHolder2.GetComponentInChildren<Resource>() == null)
+                {
+                    applianceInventory.AddItem(resource.data.Id);
+                    resource.resourceObject.transform.parent = itemHolder2.transform;
+                    itemHolder2.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                }
+                player.playerInventory.RemoveItem(player.playerInventory.itemIds[0]);
+                Craft();
             }
-            player.playerInventory.RemoveItem(player.playerInventory.itemIds[0]);
-            Craft();
         }
     }
     public override void RemoveItem()

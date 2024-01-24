@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3078753304427243831
+--- !u!1001 &8792609816639324270
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 1701081183302762901, guid: cb1ce25f3298d1f40b994dd3f0c4522a,
         type: 3}
       propertyPath: m_Name
-      value: PressBlueprint Variant
+      value: SteelChestBlueprint Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2076340840295078703, guid: cb1ce25f3298d1f40b994dd3f0c4522a,
         type: 3}
@@ -67,7 +67,7 @@ PrefabInstance:
         type: 3}
       propertyPath: bluePrintData
       value: 
-      objectReference: {fileID: 11400000, guid: a4a8e31c073ce3844a5a6ea6290978e5,
+      objectReference: {fileID: 11400000, guid: c8fee85854930af47a44b2d90918823c,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

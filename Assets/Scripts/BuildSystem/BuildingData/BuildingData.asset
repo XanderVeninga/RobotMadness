@@ -31,5 +31,30 @@ MonoBehaviour:
   - <Name>k__BackingField: Converyor Belt
     <ID>k__BackingField: 3
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 3796948387410248739, guid: 339a7339d84ca6440ad299c4c6eb74d8,
+    <Prefab>k__BackingField: {fileID: 8482693642725887751, guid: 134d192431873f24bae6412761d11ec1,
+      type: 3}
+  - <Name>k__BackingField: SteelChest
+    <ID>k__BackingField: 4
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 8795728924781423671, guid: 721a8e1d08962754bb8b035594632a4b,
+      type: 3}
+  - <Name>k__BackingField: CopperChest
+    <ID>k__BackingField: 5
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 6603553564698564272, guid: a15fd46413e57cc478e091f03d28b27f,
+      type: 3}
+  - <Name>k__BackingField: GlassChest
+    <ID>k__BackingField: 6
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 5590886655647397059, guid: f6a07f8207326ce44b9044d0a2597e61,
+      type: 3}
+  - <Name>k__BackingField: PlasticChest
+    <ID>k__BackingField: 7
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 4775088358171904200, guid: 056de0d1232dde24ca045291f5433e64,
+      type: 3}
+  - <Name>k__BackingField: SchrewChest
+    <ID>k__BackingField: 8
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 5420941505686968763, guid: d2cfbc85f7d31384985d7c15f9d0e2d5,
       type: 3}

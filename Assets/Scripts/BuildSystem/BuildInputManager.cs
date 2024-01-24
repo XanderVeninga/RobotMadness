@@ -34,8 +34,10 @@ public class BuildInputManager : MonoBehaviour
         if (Physics.Raycast(_playerController.buildChecker.position, _playerController.buildChecker.forward, out RaycastHit target, 1000, placementMask))
         {
             lastPosistion = target.point;
+            lastPosistion = new Vector3(lastPosistion.x + offset.x, lastPosistion.y, lastPosistion.z + offset.y);
         }
-        lastPosistion = new Vector3(lastPosistion.x + offset.x, lastPosistion.y, lastPosistion.z + offset.y);
+        
+
         return lastPosistion;
     }
 }

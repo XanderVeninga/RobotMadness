@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
                         var appliance = target.transform.gameObject.GetComponent<ApplianceClass>();
                         if (!appliance.Working)
                         {
-                            appliance.InsertItem(resourceHolder.transform.GetComponentInChildren<Resource>(), this);
+                            appliance.InsertItem(resourceHolder.transform.GetComponentInChildren<Resource>(), gameObject);
                         }
                     }
                     #endregion
@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
                 #region Not Holding Item
                 else //not holding item
                 {
-                    if (target.transform.gameObject.GetComponent<ResourceSpawner>()) // get an item
+                    if (target.transform.gameObject.GetComponent<ResourceSpawner>()) // get an item out of a spawner
                     {
                         target.transform.gameObject.GetComponent<ResourceSpawner>().SpawnResource(gameObject);
                         playerInventory.AddItem(resourceHolder.GetComponentInChildren<Resource>().data.Id);

@@ -39,18 +39,35 @@ public class ApplianceClass : MonoBehaviour
     }
     
 
-    public virtual void InsertItem(Resource resource, PlayerController player)
+    public virtual void InsertItem(Resource resource, GameObject source)
     {
-        if(applianceInventory.itemIds.Count < GetMaxItems())
+        if (source.GetComponent<ConveyorScript>())
         {
-            if (itemHolder.GetComponentInChildren<Resource>() == null)
+            if (applianceInventory.itemIds.Count < GetMaxItems())
             {
-                applianceInventory.AddItem(resource.data.Id);
-                resource.resourceObject.transform.parent = itemHolder.transform;
-                itemHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                if (itemHolder.GetComponentInChildren<Resource>() == null)
+                {
+                    applianceInventory.AddItem(resource.data.Id);
+                    resource.resourceObject.transform.parent = itemHolder.transform;
+                    itemHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                }
+                Craft();
             }
-            player.playerInventory.RemoveItem(player.playerInventory.itemIds[0]);
-            Craft();
+        }
+        if (source.GetComponent<PlayerController>())
+        {
+            var player = source.GetComponent<PlayerController>();
+            if (applianceInventory.itemIds.Count < GetMaxItems())
+            {
+                if (itemHolder.GetComponentInChildren<Resource>() == null)
+                {
+                    applianceInventory.AddItem(resource.data.Id);
+                    resource.resourceObject.transform.parent = itemHolder.transform;
+                    itemHolder.transform.GetChild(0).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+                }
+                player.playerInventory.RemoveItem(player.playerInventory.itemIds[0]);
+                Craft();
+            }
         }
     }
     public virtual void RemoveItem()
