@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("Moving", true);
             }
-            em.rate = parEmOn;
+            em.rateOverTime = parEmOn;
 
         }
         else if (verticalInput == 0 && horizontalInput == 0)
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("Moving", false);
             }
-            em.rate = parEmOf;
+            em.rateOverTime = parEmOf;
         }
         Vector3 right = cameraTransform.right;
         Vector3 forward = cameraTransform.forward;
@@ -72,11 +72,11 @@ public class PlayerController : MonoBehaviour
         #region Player Interactions
         #region LeftMouse press
         //Get Input From MouseButtons and check for
-        
+
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (Physics.Raycast(raycastShooter.position, raycastShooter.forward, out RaycastHit target, pickupDistance))
-            {               
+            {
                 #region Holding Item
                 if (isHoldingItem) // holding an item
                 {
@@ -110,17 +110,31 @@ public class PlayerController : MonoBehaviour
                         var terminal = target.transform.gameObject.GetComponent<OrderManager>();
                         bool doDeposit = terminal.CheckOrder(resourceHolder.GetComponentInChildren<Resource>());
                         if (doDeposit)
-                        { 
+                        {
                             playerInventory.RemoveItem(0);
                             Destroy(resourceHolder.GetComponentInChildren<Resource>().gameObject);
-                            
+
                         }
                     }
                     #endregion
                     #region hit conveyor
                     // if its a conveyor belt
+                    if (target.transform.gameObject.GetComponent<ConveyorScript>()) // if its an appliance
+                    {
+                        var conveyor = target.transform.gameObject.GetComponent<ConveyorScript>();
+                        if (conveyor.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                        {
+                            conveyor.InsertItem(resourceHolder.transform.GetComponentInChildren<Resource>(), gameObject);
+                        }
+                    }
                     #endregion
-
+                    #region hit trashcan
+                    else if (target.transform.gameObject.GetComponent<TrashCan>())
+                    {
+                        target.transform.GetComponent<TrashCan>().TrashItem(resourceHolder.GetComponentInChildren<Resource>());
+                        playerInventory.RemoveItem(0);
+                    }
+                    #endregion
 
                 }
                 #endregion
@@ -136,7 +150,7 @@ public class PlayerController : MonoBehaviour
                     else if (target.transform.gameObject.GetComponent<ApplianceClass>()) // get a potential item out of the appliance
                     {
                         var appliance = target.transform.GetComponentInChildren<ApplianceClass>();
-                        if(!appliance.Working)
+                        if (!appliance.Working)
                         {
                             if (appliance.itemHolder.transform.GetComponentInChildren<Resource>())
                             {
@@ -145,6 +159,14 @@ public class PlayerController : MonoBehaviour
                                 resourceHolder.transform.GetChild(1).SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
                                 appliance.RemoveItem();
                             }
+                        }
+                    }
+                    else if (target.transform.gameObject.GetComponent<ConveyorScript>()) // if its an appliance
+                    {
+                        var conveyor = target.transform.gameObject.GetComponent<ConveyorScript>();
+                        if (conveyor.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                        {
+                            conveyor.RemoveItem(gameObject);
                         }
                     }
                 }
@@ -169,7 +191,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else if (target.transform.GetComponent<BluePrintScript>())
                 {
-                    var bluePrint =  target.transform.GetComponent<BluePrintScript>();
+                    var bluePrint = target.transform.GetComponent<BluePrintScript>();
                     bluePrint.ActivateBluePrint();
                 }
             }

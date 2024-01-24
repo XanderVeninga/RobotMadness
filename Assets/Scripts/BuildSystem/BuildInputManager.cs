@@ -12,8 +12,7 @@ public class BuildInputManager : MonoBehaviour
     private Vector3 lastPosistion;
     [SerializeField] LayerMask placementMask;
 
-    public event Action OnClicked, OnExit;
-
+    public event Action OnClicked;
     public void Start()
     {
         BuildManager.Instance.inputManager = this;

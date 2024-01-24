@@ -22,7 +22,6 @@ public class PlacementSystem : MonoBehaviour
         BuildManager.Instance.placementSystem = this;
         StopPlacement();
         gridData = new();
-        //previewRenderer
     }
     public void StartPlacement(int ID)
     {
@@ -72,7 +71,6 @@ public class PlacementSystem : MonoBehaviour
         selectedObjectIndex = -1;
         gridVisualisation.SetActive(false);
         inputManager.OnClicked -= PlaceStructure;
-        inputManager.OnExit -= StopPlacement;
     }
     private void Update()
     {

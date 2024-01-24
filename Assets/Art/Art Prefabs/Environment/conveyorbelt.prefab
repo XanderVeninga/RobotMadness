@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 3436673129428755958}
   - component: {fileID: 5215807869618145723}
   - component: {fileID: 4052658967787092706}
+  - component: {fileID: 2680777603336608437}
   m_Layer: 0
   m_Name: conveyorbelt
   m_TagString: Untagged
@@ -156,10 +157,31 @@ MonoBehaviour:
   resourceManager: {fileID: 0}
   conveyorInventory:
     itemIds: 
-  itemHolder: {fileID: 0}
-  backChecker: {fileID: 0}
-  frontChecker: {fileID: 0}
+  itemHolder: {fileID: 7768300162357325403}
+  backChecker: {fileID: 2183337028186299220}
+  frontChecker: {fileID: 4716759435521520182}
   maxItems: 0
+--- !u!95 &2680777603336608437
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3796948387410248739}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 894ea0b1595458c49bb7545d4b3fdec4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6844372135539529346
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7768300162357325403}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ItemHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

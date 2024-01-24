@@ -6,9 +6,16 @@ public class ResourceSpawner : MonoBehaviour
 {
     public ResourceData resourceToSpawn;
     private GameObject spawnedObject;
-    public void SpawnResource(GameObject player)
+    public void SpawnResource(GameObject receiver)
     {
-        spawnedObject = Instantiate(resourceToSpawn.prefab, player.GetComponent<PlayerController>().resourceHolder.transform);
+        if (receiver.GetComponent<PlayerController>())
+        {
+            spawnedObject = Instantiate(resourceToSpawn.prefab, receiver.GetComponent<PlayerController>().resourceHolder.transform);
+        }
+        else if(receiver.GetComponent<ConveyorScript>())
+        {
+            spawnedObject = Instantiate(resourceToSpawn.prefab, receiver.GetComponent<ConveyorScript>().itemHolder.transform);
+        }
         spawnedObject.transform.localPosition = Vector3.zero;
         spawnedObject.GetComponent<Resource>().resourceObject = spawnedObject;
     }
@@ -23,6 +30,13 @@ public class ResourceSpawner : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.GetComponent<Resource>())
+        {
+            Destroy(collision.gameObject);
         }
     }
 }

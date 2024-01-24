@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 507064b281c727746b832992db476a8e, type: 3}
-  m_Name: SteelPipe
+  m_Script: {fileID: 11500000, guid: 5b0ca8744c020434a9ed18e50d96eaa8, type: 3}
+  m_Name: SteelBeam
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8838832489327688638, guid: 74c23711e1d883b4e8b6cf2a347bd61d, type: 3}
-  id: 9
+  inputItemlist:
+  - {fileID: 11400000, guid: 0ed8b121ef5b67c49835a828c9c078d2, type: 2}
+  outputItem: {fileID: 11400000, guid: 7594bc044b366ca469c2ec8085799ea6, type: 2}
