@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class OrderManager : MonoBehaviour
 {
+    public static OrderManager Instance;
     private GameManager gameManager;
     private ResourceManager resourceManager;
     private BuildManager buildManager;
@@ -18,53 +19,60 @@ public class OrderManager : MonoBehaviour
     public bool queueActive;
     public float orderWaitTime;
     public bool coroutineRunning;
+    public void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     private void Start()
     {
         gameManager = GameManager.Instance;
         resourceManager = ResourceManager.Instance;
         buildManager = BuildManager.Instance;
         AddStartItems();
-        
+
     }
 
-    public IEnumerator OrderCountDown()
+    public void OrderCountDown()
     {
-        while(coroutineRunning)
+        timeSinceStart++;
+        if (timeSinceStart % 10 == 0)
         {
-            timeSinceStart++;
-            if (timeSinceStart % 10 == 0)
+            if (orders.Count < 10)
             {
-                if (orders.Count < 10)
+                GenerateOrder();
+            }
+            else
+            {
+                if (!queueActive)
                 {
-                    GenerateOrder();
+                    orderWaitTime = 60;
+                    queueActive = true;
                 }
-                else
-                {
-                    if (!queueActive)
-                    {
-                        orderWaitTime = 60;
-                        queueActive = true;
-                    }
 
-                }
             }
-            if (queueActive)
+        }
+        if (queueActive)
+        {
+            orderWaitTime--;
+            if (orderWaitTime < 0)
             {
-                orderWaitTime--;
-                if (orderWaitTime < 0)
-                {
-                    gameManager.GameOver();
-                }
+                gameManager.GameOver();
             }
-            foreach (var order in orders)
+        }
+        foreach (var order in orders)
+        {
+            order.timeLeft--;
+            if (order.timeLeft <= 0)
             {
-                order.timeLeft--;
-                if (order.timeLeft <= 0)
-                {
-                    gameManager.GameOver();
-                }
+                gameManager.GameOver();
             }
-            yield return new WaitForSeconds(1);
         }
     }
 
@@ -76,25 +84,26 @@ public class OrderManager : MonoBehaviour
         }
         if (gameManager.currentRoundType == GameManager.RoundType.Play)
         {
-            timeSinceStart = 0;
-            if(!coroutineRunning)
+            
+            if (!coroutineRunning)
             {
-                StartCoroutine(OrderCountDown());
+                timeSinceStart = 0;
+                InvokeRepeating("OrderCountDown", 0, 1);
                 coroutineRunning = true;
             }
         }
-        if(gameManager.currentRoundType == GameManager.RoundType.Play)
+        if (gameManager.currentRoundType == GameManager.RoundType.Build)
         {
-            if(coroutineRunning)
+            if (coroutineRunning)
             {
-                StopCoroutine(OrderCountDown());
+                CancelInvoke("OrderCountDown");
                 coroutineRunning = false;
             }
         }
     }
     public void AddStartItems()
     {
-        if(buildManager.applianceList.Count >= 1)
+        if (buildManager.applianceList.Count >= 1)
         {
             foreach (ApplianceClass appliance in buildManager.applianceList)
             {
@@ -109,17 +118,23 @@ public class OrderManager : MonoBehaviour
             }
         }
     }
-    public void AddItemAvailability(int itemID)
+    public void AddItemAvailability(ApplianceClass appliance)
     {
-        if (!availableitems.Contains(resourceManager.resources[itemID]))
+
+        List<CraftingRecipe> recipes = new(appliance.GetRecipes());
+        for (int i = 0; i < recipes.Count; i++)
         {
-            availableitems.Add(resourceManager.resources[itemID]);
+            if (!availableitems.Contains(recipes[i].outputItem))
+            {
+                availableitems.Add(recipes[i].outputItem);
+            }
         }
+
     }
     public ClientOrder GenerateOrder()
     {
         int wantedID = Random.Range(0, availableitems.Count);
-        ClientOrder order = new() { wantedItem = availableitems[wantedID], moneyReward = Random.Range(10,50)};
+        ClientOrder order = new() { wantedItem = availableitems[wantedID], moneyReward = Random.Range(10, 50) };
         Debug.Log(order.wantedItem);
         orders.Add(order);
         GameObject spawnedObject = Instantiate(order.wantedItem.prefab, gameObject.transform);

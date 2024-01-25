@@ -8,6 +8,7 @@ public class PlacementSystem : MonoBehaviour
 {
     [SerializeField] GameObject playerObject;
     public Material[] materials;
+    public BuildManager buildManager;
     [SerializeField] private BuildInputManager inputManager;
     [SerializeField] Grid grid;
     [SerializeField] public ObjectDatabaseSO database;
@@ -19,6 +20,7 @@ public class PlacementSystem : MonoBehaviour
 
     private void Start()
     {
+        buildManager = BuildManager.Instance;
         BuildManager.Instance.placementSystem = this;
         StopPlacement();
         gridData = new();
@@ -52,14 +54,18 @@ public class PlacementSystem : MonoBehaviour
         newBuilding.transform.position = grid.CellToWorld(gridPosistion);
         newBuilding.transform.GetChild(0).transform.eulerAngles = placementIndicator.transform.GetChild(0).transform.eulerAngles;
         placedObjects.Add(newBuilding);
+
         GridData selectedData = gridData;
         selectedData.AddObjectAt(gridPosistion, database.objectsData[selectedObjectIndex].Size, database.objectsData[selectedObjectIndex].ID, placedObjects.Count-1);
         placementIndicator.transform.GetChild(0).GetComponent<Renderer>().material = materials[0];
         placementIndicator.transform.GetChild(0).GetComponent<BoxCollider>().enabled = true;
+
         Destroy(placementIndicator);
-        if(newBuilding.GetComponent<ApplianceClass>())
+        if(newBuilding.GetComponentInChildren<ApplianceClass>())
         {
-            BuildManager.Instance.applianceList.Add(newBuilding.GetComponent<ApplianceClass>());
+            var appliance = newBuilding.GetComponentInChildren<ApplianceClass>();
+            buildManager.AddBuilding(appliance);
+            OrderManager.Instance.AddItemAvailability(appliance);
         }
         StopPlacement();
     }
