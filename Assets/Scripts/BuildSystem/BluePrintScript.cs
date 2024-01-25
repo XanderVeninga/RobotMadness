@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BluePrintScript : MonoBehaviour
 {
-    [SerializeField] BluePrintData bluePrintData;
+    [SerializeField] public BluePrintData bluePrintData;
     BuildManager buildManager;
     PlacementSystem placementSystem;
     BuildInputManager inputManager;

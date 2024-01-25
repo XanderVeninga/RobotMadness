@@ -40,4 +40,17 @@ public class BuildManager : MonoBehaviour
     {
         applianceList.Remove(appliance);
     }
+
+    public int GetBuildingID(ApplianceClass appliance)
+    {
+        int applianceID = 0;
+        foreach (var blueprint in bluePrints)
+        {
+            if(appliance.gameObject == placementSystem.database.objectsData[blueprint.GetComponent<BluePrintScript>().bluePrintData.ID].Prefab)
+            {
+                applianceID = placementSystem.database.objectsData[blueprint.GetComponent<BluePrintScript>().bluePrintData.ID].ID;
+            }
+        }
+        return applianceID;
+    }
 }

@@ -8,7 +8,6 @@ using UnityEngine;
 public class ClientOrder
 {
     [SerializeField] public ResourceData wantedItem;
-    [SerializeField] private float timeLeft;
-    [SerializeField] public float timeCreated;
-    
+    [SerializeField] public float timeLeft = 60;
+    public int moneyReward;
 }

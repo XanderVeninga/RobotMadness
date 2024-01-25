@@ -5,6 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public enum RoundType
+    {
+        Build,
+        Play
+    }
+    public RoundType currentRoundType;
     // Start is called before the first frame update
     void Awake()
     {

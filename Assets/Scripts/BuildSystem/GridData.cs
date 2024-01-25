@@ -9,11 +9,24 @@ public class GridData
 
     public void AddObjectAt(Vector3Int gridPosition, Vector2Int objectSize, int ID, int placedObjectIndex)
     {
-        List<Vector3Int> posistionsToOccuPy = CalculatePosistions(gridPosition, objectSize);
-        PlacementData data = new PlacementData(posistionsToOccuPy, ID, placedObjectIndex);
-        foreach (var pos in posistionsToOccuPy)
+        List<Vector3Int> posistionsToOccupy = CalculatePosistions(gridPosition, objectSize);
+        PlacementData data = new PlacementData(posistionsToOccupy, ID, placedObjectIndex);
+        foreach (var pos in posistionsToOccupy)
         {
             if (placedObjects.ContainsKey(pos))
+            {
+                throw new Exception($"Dictionary already contains this cell posistion");
+            }
+            placedObjects[pos] = data;
+        }
+    }
+    public void RemoveObjectAt(Vector3Int gridPosition, Vector2Int objectSize, int ID, int placedObjectIndex)
+    {
+        List<Vector3Int> posistionsToUnoccupy = CalculatePosistions(gridPosition, objectSize);
+        PlacementData data = new PlacementData(posistionsToUnoccupy, -1, -1);
+        foreach (var pos in posistionsToUnoccupy)
+        {
+            if (!placedObjects.ContainsKey(pos))
             {
                 throw new Exception($"Dictionary already contains this cell posistion");
             }

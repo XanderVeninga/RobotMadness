@@ -10,12 +10,12 @@ public class PlacementSystem : MonoBehaviour
     public Material[] materials;
     [SerializeField] private BuildInputManager inputManager;
     [SerializeField] Grid grid;
-    [SerializeField] ObjectDatabaseSO database;
+    [SerializeField] public ObjectDatabaseSO database;
     private int selectedObjectIndex = -1;
     [SerializeField] private GameObject gridVisualisation;
     [SerializeField] private GameObject placementIndicator;
     private GridData gridData;
-    private List<GameObject> placedObjects = new();
+    public List<GameObject> placedObjects = new();
 
     private void Start()
     {
@@ -50,12 +50,17 @@ public class PlacementSystem : MonoBehaviour
         }
         GameObject newBuilding = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
         newBuilding.transform.position = grid.CellToWorld(gridPosistion);
+        newBuilding.transform.GetChild(0).transform.eulerAngles = placementIndicator.transform.GetChild(0).transform.eulerAngles;
         placedObjects.Add(newBuilding);
         GridData selectedData = gridData;
         selectedData.AddObjectAt(gridPosistion, database.objectsData[selectedObjectIndex].Size, database.objectsData[selectedObjectIndex].ID, placedObjects.Count-1);
         placementIndicator.transform.GetChild(0).GetComponent<Renderer>().material = materials[0];
         placementIndicator.transform.GetChild(0).GetComponent<BoxCollider>().enabled = true;
         Destroy(placementIndicator);
+        if(newBuilding.GetComponent<ApplianceClass>())
+        {
+            BuildManager.Instance.applianceList.Add(newBuilding.GetComponent<ApplianceClass>());
+        }
         StopPlacement();
     }
 
@@ -86,5 +91,11 @@ public class PlacementSystem : MonoBehaviour
         }
         bool placementValidity = CheckPlacementValidity(gridPosistion, selectedObjectIndex);
         placementIndicator.transform.GetChild(0).GetComponent<Renderer>().material = placementValidity ? materials[1] : materials[2];
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Vector3 curEulers = placementIndicator.transform.GetChild(0).eulerAngles;
+            curEulers.y = placementIndicator.transform.GetChild(0).eulerAngles.y + 90;
+            placementIndicator.transform.GetChild(0).transform.eulerAngles = curEulers;
+        }
     }
 }

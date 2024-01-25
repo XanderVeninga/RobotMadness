@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class ConveyorScript : MonoBehaviour
 {
-    [SerializeField] ResourceManager resourceManager;
+    [SerializeField] GameManager gameManager;
     [SerializeField] Inventory conveyorInventory = new();
     public Transform itemHolder;
     [SerializeField] Transform backChecker;
@@ -17,7 +16,7 @@ public class ConveyorScript : MonoBehaviour
 
     private void Start()
     {
-        resourceManager = ResourceManager.Instance;
+        gameManager = GameManager.Instance;
         _meshRenderer = GetComponent<MeshRenderer>();
     }
     public int GetMaxItems()
@@ -99,70 +98,73 @@ public class ConveyorScript : MonoBehaviour
     public void AdjustSpeed(float speed)
     {
 
-        _meshRenderer.materials[1].SetFloat("Speed", speed);
+        _meshRenderer.materials[1].SetFloat("_Speed", speed);
     }
 
     private void FixedUpdate()
     {
-        RaycastHit frontTarget;
-        RaycastHit backTarget;
-        //front target checks
-        if (itemHolder.GetComponentInChildren<Resource>())
+        if(gameManager.currentRoundType == GameManager.RoundType.Play)
         {
-            if (Physics.Raycast(frontChecker.position, frontChecker.forward, out frontTarget, 2))
+            RaycastHit frontTarget;
+            RaycastHit backTarget;
+            //front target checks
+            if (itemHolder.GetComponentInChildren<Resource>())
             {
-                var animator = gameObject.GetComponent<Animator>();
-                var appliance = frontTarget.transform.GetComponent<ApplianceClass>();
-                var conveyor = frontTarget.transform.GetComponent<ConveyorScript>();
-                var spawner = frontTarget.transform.GetComponent<ResourceSpawner>();
+                if (Physics.Raycast(frontChecker.position, frontChecker.forward, out frontTarget, 2))
+                {
+                    var animator = gameObject.GetComponent<Animator>();
+                    var appliance = frontTarget.transform.GetComponent<ApplianceClass>();
+                    var conveyor = frontTarget.transform.GetComponent<ConveyorScript>();
+                    var spawner = frontTarget.transform.GetComponent<ResourceSpawner>();
 
-                if (appliance)
-                {
-                    if (appliance.applianceInventory.itemIds.Count != appliance.GetMaxItems() && appliance.Working == false)
+                    if (appliance)
                     {
-                        animator.SetBool("depositItem", true);
+                        if (appliance.applianceInventory.itemIds.Count != appliance.GetMaxItems() && appliance.Working == false)
+                        {
+                            animator.SetBool("depositItem", true);
+                        }
                     }
-                }
-                else if (conveyor)
-                {
-                    animator.SetTrigger("depositItem");
-                    conveyor.InsertItem(itemHolder.GetComponentInChildren<Resource>(), gameObject);
-                }
-                else if (spawner)
-                {
-                    if (spawner.resourceToSpawn == itemHolder.GetComponentInChildren<Resource>().data)
+                    else if (conveyor)
                     {
                         animator.SetTrigger("depositItem");
+                        conveyor.InsertItem(itemHolder.GetComponentInChildren<Resource>(), gameObject);
+                    }
+                    else if (spawner)
+                    {
+                        if (spawner.resourceToSpawn == itemHolder.GetComponentInChildren<Resource>().data)
+                        {
+                            animator.SetTrigger("depositItem");
+                        }
                     }
                 }
             }
-        }
-        else
-        {
-            if (Physics.Raycast(backChecker.position, backChecker.forward, out backTarget, 2))
+            else
             {
-                //back target check
-                var animator = gameObject.GetComponent<Animator>();
-                var appliance = backTarget.transform.GetComponent<ApplianceClass>();
-                var conveyor = backTarget.transform.GetComponent<ConveyorScript>();
-                var spawner = backTarget.transform.GetComponent<ResourceSpawner>();
-
-                if (appliance)
+                if (Physics.Raycast(backChecker.position, backChecker.forward, out backTarget, 2))
                 {
-                    if(appliance.Working == false && appliance.applianceInventory.itemIds.Count > 0)
+                    //back target check
+                    var animator = gameObject.GetComponent<Animator>();
+                    var appliance = backTarget.transform.GetComponent<ApplianceClass>();
+                    var conveyor = backTarget.transform.GetComponent<ConveyorScript>();
+                    var spawner = backTarget.transform.GetComponent<ResourceSpawner>();
+
+                    if (appliance)
                     {
-                        Debug.Log("Removing from appliance");
+                        if (appliance.Working == false && appliance.applianceInventory.itemIds.Count > 0)
+                        {
+                            Debug.Log("Removing from appliance");
+                            animator.SetTrigger("hasItem");
+                        }
+
+                    }
+                    else if (conveyor)
+                    {
                         animator.SetTrigger("hasItem");
                     }
-                    
-                }
-                else if (conveyor)
-                {
-                    animator.SetTrigger("hasItem");
-                }
-                else if (spawner)
-                { 
-                    animator.SetTrigger("hasItem");
+                    else if (spawner)
+                    {
+                        animator.SetTrigger("hasItem");
+                    }
                 }
             }
         }
