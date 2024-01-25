@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class OrderManager : MonoBehaviour
     private BuildManager buildManager;
 
     public GameObject moneyText;
+    public GameObject[] blueprintsPrefabs;
 
     public List<ResourceData> availableitems = new();
     public List<ClientOrder> orders = new();
@@ -40,7 +42,14 @@ public class OrderManager : MonoBehaviour
         AddStartItems();
 
     }
-
+    public void ClearBlueprints()
+    {
+        BluePrintScript[] BPtoDestroy = FindObjectsOfType<BluePrintScript>();
+        foreach (BluePrintScript bp in BPtoDestroy)
+        {
+            Destroy(bp.gameObject);
+        }
+    }
     public void OrderCountDown()
     {
         timeSinceStart++;
@@ -76,11 +85,6 @@ public class OrderManager : MonoBehaviour
                 gameManager.GameOver();
             }
         }
-        if(ordersCompleted == 20)
-        {
-            gameManager.currentRoundType = GameManager.RoundType.Build;
-            day++;
-        }
     }
 
     private void Update()
@@ -88,6 +92,7 @@ public class OrderManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Tab) && gameManager.currentRoundType == GameManager.RoundType.Build)
         {
             gameManager.currentRoundType = GameManager.RoundType.Play;
+            ClearBlueprints();
         }
         if (gameManager.currentRoundType == GameManager.RoundType.Play)
         {
@@ -130,10 +135,9 @@ public class OrderManager : MonoBehaviour
     {
         for (int g = 0; g < 5; g++)
         {
-            Transform pos = gameObject.transform;
-            pos.position = new Vector3(gameObject.transform.position.x + g, gameObject.transform.position.y, gameObject.transform.position.z);
+            Vector3 pos = new Vector3(gameObject.transform.position.x + g, gameObject.transform.position.y + 0.2f, gameObject.transform.position.z);
             int randInt = Random.Range(0, buildManager.placementSystem.database.objectsData.Count-1);
-            Instantiate(buildManager.placementSystem.database.objectsData[randInt].Prefab, pos);
+            Instantiate(blueprintsPrefabs[randInt], pos, Quaternion.identity);
         }
     }
     public void AddItemAvailability(ApplianceClass appliance)
@@ -162,13 +166,19 @@ public class OrderManager : MonoBehaviour
 
     public bool CheckOrder(Resource resource)
     {
-        for (int i = 0; i < orders.Count; i++)
+        for (int i = 0; i < orders.Count-1; i++)
         {
             if (orders[i].wantedItem == resource.data)
             {
                 RemoveOrder(orders[i]);
-                buildManager.Money += orders[i].moneyReward;
-                moneyText.GetComponent<Text>().text = ": " + buildManager.Money.ToString();
+                BuildManager.Instance.AddMoney(orders[i].moneyReward);
+                moneyText.GetComponent<TextMeshProUGUI>().text = ": " + buildManager.Money.ToString();
+                ordersCompleted++;
+                if (ordersCompleted == 20)
+                {
+                    gameManager.currentRoundType = GameManager.RoundType.Build;
+                    day++;
+                }
                 return true;
             }
         }

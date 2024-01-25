@@ -18,7 +18,10 @@ public class BuildManager : MonoBehaviour
         set { money = value; }
     }
     
-
+    public void AddMoney(int value)
+    {
+        money += value;
+    }
 
     public void Awake()
     {

@@ -2012,25 +2012,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 706375519097815409, guid: 4a2f020184e08124cb2c002b61ca35f3,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 8.9999695
-      objectReference: {fileID: 0}
-    - target: {fileID: 2270609407240586167, guid: 4a2f020184e08124cb2c002b61ca35f3,
-        type: 3}
-      propertyPath: m_text
-      value: ': 0'
-      objectReference: {fileID: 0}
     - target: {fileID: 2742804796197870004, guid: 4a2f020184e08124cb2c002b61ca35f3,
         type: 3}
       propertyPath: m_Name
       value: Main game canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 3280682563436627229, guid: 4a2f020184e08124cb2c002b61ca35f3,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 12.9999695
       objectReference: {fileID: 0}
     - target: {fileID: 5601724183883089013, guid: 4a2f020184e08124cb2c002b61ca35f3,
         type: 3}
@@ -2132,10 +2117,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5803346835679715340, guid: 4a2f020184e08124cb2c002b61ca35f3,
+    - target: {fileID: 5894227099365398084, guid: 4a2f020184e08124cb2c002b61ca35f3,
         type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 27.49997
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2446,6 +2431,71 @@ PrefabInstance:
       propertyPath: moneyText
       value: 
       objectReference: {fileID: 1557415743}
+    - target: {fileID: 627669014155489619, guid: 8398e47c23431094bbdb62477dca4595,
+        type: 3}
+      propertyPath: blueprintsPrefabs.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 627669014155489619, guid: 8398e47c23431094bbdb62477dca4595,
+        type: 3}
+      propertyPath: blueprintsPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5397821931328572189, guid: c1fc47fc12c105c4e8222fa0dc13c3e3,
+        type: 3}
+    - target: {fileID: 627669014155489619, guid: 8398e47c23431094bbdb62477dca4595,
+        type: 3}
+      propertyPath: blueprintsPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 610862177667258666, guid: a8328448c2cdfd048a392e45a10d2017,
+        type: 3}
+    - target: {fileID: 627669014155489619, guid: 8398e47c23431094bbdb62477dca4595,
+        type: 3}
+      propertyPath: blueprintsPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 387594728123780752, guid: 1cc645241fb254c4e806a67f1a257e26,
+        type: 3}
+    - target: {fileID: 627669014155489619, guid: 8398e47c23431094bbdb62477dca4595,
+        type: 3}
+      propertyPath: blueprintsPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 8252399056129214970, guid: b68b239f9243af444b2869b01baebb0c,
+        type: 3}
+    - target: {fileID: 627669014155489619, guid: 8398e47c23431094bbdb62477dca4595,
+        type: 3}
+      propertyPath: blueprintsPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 9038252557079692275, guid: f3fc85571bc72f74ab6ddd38ebe3ad11,
+        type: 3}
+    - target: {fileID: 627669014155489619, guid: 8398e47c23431094bbdb62477dca4595,
+        type: 3}
+      propertyPath: blueprintsPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 4405252174879058082, guid: 493dcca27ace1b54883cd26325d23fbb,
+        type: 3}
+    - target: {fileID: 627669014155489619, guid: 8398e47c23431094bbdb62477dca4595,
+        type: 3}
+      propertyPath: blueprintsPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 8444152897152142663, guid: 6ffc36d52dfd47a44a7dc144dee7db7d,
+        type: 3}
+    - target: {fileID: 627669014155489619, guid: 8398e47c23431094bbdb62477dca4595,
+        type: 3}
+      propertyPath: blueprintsPrefabs.Array.data[7]
+      value: 
+      objectReference: {fileID: 7898984278690267643, guid: fc54a4cf97a438f4c81a0c7d5a0243fb,
+        type: 3}
+    - target: {fileID: 627669014155489619, guid: 8398e47c23431094bbdb62477dca4595,
+        type: 3}
+      propertyPath: blueprintsPrefabs.Array.data[8]
+      value: 
+      objectReference: {fileID: 8023778566618148918, guid: edb1b75a2205e0742b2292d909fcea09,
+        type: 3}
+    - target: {fileID: 627669014155489619, guid: 8398e47c23431094bbdb62477dca4595,
+        type: 3}
+      propertyPath: blueprintsPrefabs.Array.data[9]
+      value: 
+      objectReference: {fileID: 5376270218271291529, guid: 8e9607f3f02ef2d4e97d0406438d6b50,
+        type: 3}
     - target: {fileID: 7022009307374081285, guid: 8398e47c23431094bbdb62477dca4595,
         type: 3}
       propertyPath: m_Name
