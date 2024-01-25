@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GlassChest
   m_EditorClassIdentifier: 
   <ID>k__BackingField: 6
-  <BlueprintCost>k__BackingField: 0
+  <BlueprintCost>k__BackingField: 50

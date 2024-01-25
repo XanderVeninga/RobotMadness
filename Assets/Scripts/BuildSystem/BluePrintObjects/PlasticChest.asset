@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlasticChest
   m_EditorClassIdentifier: 
   <ID>k__BackingField: 7
-  <BlueprintCost>k__BackingField: 0
+  <BlueprintCost>k__BackingField: 50

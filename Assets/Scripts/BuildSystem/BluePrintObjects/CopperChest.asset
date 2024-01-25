@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CopperChest
   m_EditorClassIdentifier: 
   <ID>k__BackingField: 5
-  <BlueprintCost>k__BackingField: 0
+  <BlueprintCost>k__BackingField: 50

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AutoCrafter
   m_EditorClassIdentifier: 
   <ID>k__BackingField: 2
-  <BlueprintCost>k__BackingField: 0
+  <BlueprintCost>k__BackingField: 500

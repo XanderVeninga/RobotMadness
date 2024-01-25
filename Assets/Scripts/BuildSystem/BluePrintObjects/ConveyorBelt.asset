@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ConveyorBelt
   m_EditorClassIdentifier: 
   <ID>k__BackingField: 3
-  <BlueprintCost>k__BackingField: 0
+  <BlueprintCost>k__BackingField: 50

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Furnace
   m_EditorClassIdentifier: 
   <ID>k__BackingField: 1
-  <BlueprintCost>k__BackingField: 0
+  <BlueprintCost>k__BackingField: 100

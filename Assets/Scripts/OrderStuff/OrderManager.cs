@@ -19,6 +19,8 @@ public class OrderManager : MonoBehaviour
     public bool queueActive;
     public float orderWaitTime;
     public bool coroutineRunning;
+    public int day;
+    public int ordersCompleted;
     public void Awake()
     {
         if (Instance != null && Instance != this)
@@ -74,6 +76,11 @@ public class OrderManager : MonoBehaviour
                 gameManager.GameOver();
             }
         }
+        if(ordersCompleted == 20)
+        {
+            gameManager.currentRoundType = GameManager.RoundType.Build;
+            day++;
+        }
     }
 
     private void Update()
@@ -98,6 +105,7 @@ public class OrderManager : MonoBehaviour
             {
                 CancelInvoke("OrderCountDown");
                 coroutineRunning = false;
+                GenerateBluePrints();
             }
         }
     }
@@ -116,6 +124,16 @@ public class OrderManager : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+    public void GenerateBluePrints()
+    {
+        for (int g = 0; g < 5; g++)
+        {
+            Transform pos = gameObject.transform;
+            pos.position = new Vector3(gameObject.transform.position.x + g, gameObject.transform.position.y, gameObject.transform.position.z);
+            int randInt = Random.Range(0, buildManager.placementSystem.database.objectsData.Count-1);
+            Instantiate(buildManager.placementSystem.database.objectsData[randInt].Prefab, pos);
         }
     }
     public void AddItemAvailability(ApplianceClass appliance)
@@ -150,7 +168,7 @@ public class OrderManager : MonoBehaviour
             {
                 RemoveOrder(orders[i]);
                 buildManager.Money += orders[i].moneyReward;
-                moneyText.GetComponent<Text>().text = $": {buildManager.Money}";
+                moneyText.GetComponent<Text>().text = ": " + buildManager.Money.ToString();
                 return true;
             }
         }

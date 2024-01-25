@@ -58,3 +58,8 @@ MonoBehaviour:
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 5420941505686968763, guid: d2cfbc85f7d31384985d7c15f9d0e2d5,
       type: 3}
+  - <Name>k__BackingField: SchrewChest
+    <ID>k__BackingField: 9
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 2604175706926104566, guid: b49eb0370a79f6e40b7f5ce362072d6e,
+      type: 3}
