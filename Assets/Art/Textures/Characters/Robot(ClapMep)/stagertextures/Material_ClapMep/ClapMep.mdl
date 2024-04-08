@@ -1,0 +1,43 @@
+mdl 1.6;
+
+import ::adobe::annotations::*;
+import ::adobe::materials::*;
+import ::anno::*;
+import ::base::*;
+import ::state::*;
+import ::tex::gamma_mode;
+
+export material DEFAULTMATERIAL(*)
+ = ::adobe::materials::standard(
+     specular_ior :1.50000000f,
+     coat_ior :1.60000002f,
+     scatter_distance :0.50000000f,
+     emission :1.00000000f,
+     base_color: ::base::file_texture(
+          texture: texture_2d("DEFAULTMATERIAL_base_color.png", ::tex::gamma_srgb),
+          mono_source: ::base::mono_average,
+          uvw: ::base::transform_coordinate(::base::rotation_translation_scale())).tint,
+     emission_color: ::base::file_texture(
+          texture: texture_2d("DEFAULTMATERIAL_emission_color.png", ::tex::gamma_srgb),
+          mono_source: ::base::mono_average,
+          uvw: ::base::transform_coordinate(::base::rotation_translation_scale())).tint,
+     roughness: ::base::file_texture(
+          texture: texture_2d("DEFAULTMATERIAL_roughness.png", ::tex::gamma_linear),
+          mono_source: ::base::mono_average,
+          uvw: ::base::transform_coordinate(::base::rotation_translation_scale())).mono,
+     metallic: ::base::file_texture(
+          texture: texture_2d("DEFAULTMATERIAL_metallic.png", ::tex::gamma_linear),
+          mono_source: ::base::mono_average,
+          uvw: ::base::transform_coordinate(::base::rotation_translation_scale())).mono,
+     normal: ::base::tangent_space_normal_texture(
+          texture: texture_2d("DEFAULTMATERIAL_normal.png", ::tex::gamma_linear),
+          flip_tangent_v: false,
+          uvw: ::base::transform_coordinate(::base::rotation_translation_scale()),
+          offset: 1.f),
+     ambient_occlusion: ::base::file_texture(
+          texture: texture_2d("DEFAULTMATERIAL_ambient_occlusion.png", ::tex::gamma_linear),
+          mono_source: ::base::mono_average,
+          uvw: ::base::transform_coordinate(::base::rotation_translation_scale())).mono,
+     combine_normal_and_height: false
+);
+
