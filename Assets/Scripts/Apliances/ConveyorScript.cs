@@ -23,7 +23,6 @@ public class ConveyorScript : MonoBehaviour
     {
         return maxItems;
     }
-    [SerializeField]
     public void InsertItem(Resource resource, GameObject source)
     {
         if (conveyorInventory.itemIds.Count < GetMaxItems())
