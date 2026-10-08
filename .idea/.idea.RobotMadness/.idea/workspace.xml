@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeSettings">
+    <configurations />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ae1cff88-8db6-4703-84a6-39d55361aac8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Marnix/Otto.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Marnix/Otto.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Characters/Robot(ClapMep)/ClapMepMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Characters/Robot(ClapMep)/ClapMepMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Conveyor/belt.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Conveyor/belt.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Conveyor/beltMove.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Conveyor/beltMove.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Conveyor/conveyor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Conveyor/conveyor.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Items/Copper/ItemChestCopper.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Items/Copper/ItemChestCopper.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Items/Plastic/PlasticItem.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Items/Plastic/PlasticItem.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Items/Screws/ScrewsItemMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Items/Screws/ScrewsItemMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Items/Steel/SteelItem.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Items/Steel/SteelItem.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Items/glass/GlassItem.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Items/glass/GlassItem.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Laser/laserarmarmmat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Laser/laserarmarmmat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Laser/lasertablemat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Laser/lasertablemat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Battery/Battery.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Battery/Battery.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Blueprint/Blueprint.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Blueprint/Blueprint.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Copper/Copper.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Copper/Copper.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/CopperWire/CopperWire.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/CopperWire/CopperWire.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Glass/Glass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Glass/Glass.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Lightbulb/LightBulb.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Lightbulb/LightBulb.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Plastic/Plastic.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Plastic/Plastic.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Screws/Screws.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Screws/Screws.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Steel/Steel.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Steel/Steel.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/SteelPipes/Steel Pipes.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/SteelPipes/Steel Pipes.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/SteelPlate/SteelPlate.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/SteelPlate/SteelPlate.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Steelbar/SteelBar.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/Material (ingame)/Steelbar/SteelBar.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/MetalPress/MetalPressMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/MetalPress/MetalPressMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/MetalPress/MetalPressTop/MetalPressTopMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/MetalPress/MetalPressTop/MetalPressTopMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/building/building.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/building/building.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/building/props.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/building/props.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/building/staires.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/building/staires.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/computer/compuetmat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/computer/compuetmat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/counter/counterMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/counter/counterMat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/furnace/furnacemat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/furnace/furnacemat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Textures/trashcan/trashmat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Textures/trashcan/trashmat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Particles-sfx/Particle mat/Materials/Schermafbeelding 2023-11-24 131909.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Particles-sfx/Particle mat/Materials/Schermafbeelding 2023-11-24 131909.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Particles-sfx/Particle mat/Materials/bcf1452ce5a53535c2e6f457fdad892be9dd6503.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Particles-sfx/Particle mat/Materials/bcf1452ce5a53535c2e6f457fdad892be9dd6503.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Particles-sfx/Shaders/Highlight BLUE.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Particles-sfx/Shaders/Highlight BLUE.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Particles-sfx/Shaders/Highlight.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Particles-sfx/Shaders/Highlight.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Particles-sfx/Shaders/Shader Graphs_Interact outline.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Particles-sfx/Shaders/Shader Graphs_Interact outline.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Particles-sfx/TEST/New Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Particles-sfx/TEST/New Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BuildSystem/GridShader.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BuildSystem/GridShader.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3KMruUIEV6hfycPil5CBB9f1JK9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "Updating__Project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\xande\Desktop\UnityProjects\IndvProj\Prog\RobotMadness -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\xande\Desktop\UnityProjects\IndvProj\Prog\RobotMadness" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\xande\Desktop\UnityProjects\IndvProj\Prog\RobotMadness -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\xande\Desktop\UnityProjects\IndvProj\Prog\RobotMadness" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="coreClr" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ae1cff88-8db6-4703-84a6-39d55361aac8" name="Changes" comment="" />
+      <created>1791378505108</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1791378505108</updated>
+      <workItem from="1791378508063" duration="219000" />
+      <workItem from="1791392474255" duration="1014000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityProjectDiscoverer">
+    <option name="hasUnityReference" value="true" />
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
